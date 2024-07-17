@@ -16,17 +16,21 @@ public class FlipFitApplication {
                 "\n 1-> Login, " +
                 "\n 2-> Registration of Customer " +
                 "\n 3-> Registration of Gym Owner " +
-                "\n 4-> Exit \n"
+                "\n 4-> Change Password " +
+                "\n 5-> Exit \n"
         );
         choice = in.nextInt();
 
         switch (choice) {
             case 1: {
                 System.out.println("Enter your Login Credentials");
+
                 System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
+
                 System.out.println("Enter your password:> ");
                 String password = in.next();
+
                 System.out.println("Enter your role:> Customer/Admin/GymOwner ");
                 String role = in.next();
 
@@ -34,28 +38,37 @@ public class FlipFitApplication {
                     case "ADMIN": {
                         String adminId = UUID.randomUUID().toString();
                         Admin admin = new Admin();
+
                         admin.setAdminId(adminId);
                         admin.setEmailId(emailId);
                         admin.setPassword(password);
+
                         FlipFitAdminMenu.getFlipFitAdminMenu();
+
                         break;
                     }
                     case "CUSTOMER": {
                         String customerId = UUID.randomUUID().toString();
                         Customer customer = new Customer();
+
                         customer.setCustomerID(customerId);
                         customer.setEmailId(emailId);
                         customer.setPassword(password);
+
                         FlipFitCustomerMenu.getFlipFitCustomerMenu();
+
                         break;
                     }
                     case "GYM OWNER": {
                         String gymOwnerId = UUID.randomUUID().toString();
                         GymOwner gymOwner = new GymOwner();
+
                         gymOwner.setOwnerId(gymOwnerId);
                         gymOwner.setEmailId(emailId);
                         gymOwner.setPassword(password);
+
                         FlipFitGymOwnerMenu.getGymOwnerMenu();
+
                         break;
                     }
                 }
@@ -64,16 +77,22 @@ public class FlipFitApplication {
             }
             case 2: {
                 System.out.println("Enter your Credentials");
+
                 System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
+
                 System.out.println("Enter your password:> ");
                 String password = in.next();
+
                 System.out.println("Enter your Name:> ");
                 String name = in.next();
+
                 System.out.println("Enter your Address:> ");
                 String address = in.next();
+
                 String customerId = UUID.randomUUID().toString();
                 Customer customer = new Customer();
+
                 customer.setCustomerID(customerId);
                 customer.setEmailId(emailId);
                 customer.setPassword(password);
@@ -82,23 +101,32 @@ public class FlipFitApplication {
                 System.out.println("Name: " + name);
                 System.out.println("Address: " + address);
                 System.out.println("Email Id: " + emailId);
+
                 FlipFitCustomerMenu.getFlipFitCustomerMenu();
+
                 break;
             }
             case 3: {
                 System.out.println("Enter your Credentials");
+
                 System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
+
                 System.out.println("Enter your password:> ");
                 String password = in.next();
+
                 System.out.println("Enter your Name:> ");
                 String name = in.next();
+
                 System.out.println("Enter your Address:> ");
                 String address = in.next();
+
                 System.out.println("Enter your Phone No.:> ");
                 String phone = in.next();
+
                 String gymOwnerId = UUID.randomUUID().toString();
                 GymOwner gymOwner = new GymOwner();
+
                 gymOwner.setOwnerId(gymOwnerId);
                 gymOwner.setEmailId(emailId);
                 gymOwner.setPassword(password);
@@ -108,8 +136,45 @@ public class FlipFitApplication {
                 System.out.println("Address: " + address);
                 System.out.println("Phone No: " + phone);
                 System.out.println("Email Id: " + emailId);
+
                 FlipFitGymOwnerMenu.getGymOwnerMenu();
+
                 break;
+            }
+            case 4: {
+                System.out.println("Enter your role");
+                String role = in.next();
+
+                System.out.println("Enter your emailId");
+                String emailId = in.next();
+
+                System.out.println("Enter your old Password");
+                String oldPassword = in.next();
+
+                System.out.println("Enter your new Password");
+                String newPassword = in.next();
+
+                switch (role) {
+                    case "ADMIN": {
+                        Admin admin = new Admin();
+                        admin.setPassword(newPassword);
+                        break;
+                    }
+                    case "CUSTOMER": {
+                        Customer customer = new Customer();
+                        customer.setPassword(newPassword);
+                        break;
+                    }
+                    case "GYM OWNER": {
+                        GymOwner gymOwner = new GymOwner();
+                        gymOwner.setPassword(newPassword);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 5: {
+                System.exit(0);
             }
         }
     }
