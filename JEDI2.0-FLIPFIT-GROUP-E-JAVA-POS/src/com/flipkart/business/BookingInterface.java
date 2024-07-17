@@ -1,13 +1,14 @@
 package com.flipkart.business;
 
-// imports
-
 import com.flipkart.bean.Booking;
-//import com.flipkart.bean
+import com.flipkart.utils.UserPlan;
+import java.util.Date;
 import java.util.List;
 
 public interface BookingInterface {
-    public List<Booking> getBookings(String customerId);
-    public void createBooking(String customerId, String gymId, String slotId, String bookingDate, String bookingTime, String bookingStatus, String bookingAmount );
-    public void deleteBooking(String bookingId);
+    boolean checkBookingOverlap(String customerId, Date date, String slotId);
+    void addBooking(String userId, String scheduleID);
+    List<Booking> getBookingByCustomerId(String customerId);
+    void cancelBooking(String bookingID);
+    List<UserPlan> getCustomerPlan(String customerId);
 }

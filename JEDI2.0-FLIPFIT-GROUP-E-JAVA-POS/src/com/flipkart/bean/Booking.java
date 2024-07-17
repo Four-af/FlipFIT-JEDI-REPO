@@ -1,79 +1,46 @@
 package com.flipkart.bean;
 
 public class Booking {
-    private String bookingId;
-    private String customerId;
-    private String gymId;
-    private String slotId;
-    
-    public String getBookingId() {
-        return bookingId;
+    private String bookingID;
+    private String userID;
+    private String scheduleID;
+
+    public Booking(String userID, String scheduleID) {
+        this.userID = userID;
+        this.scheduleID = scheduleID;
     }
 
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
+    public Booking(String bookingID, String userID, String scheduleID) {
+        this.bookingID = bookingID;
+        this.userID = userID;
+        this.scheduleID = scheduleID;
     }
 
-    public String getCustomerId() {
-        return customerId;
+
+    public String getBookingID() {
+        return bookingID;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setBookingID(String bookingID) {
+        this.bookingID = bookingID;
     }
 
-    public String getGymId() {
-        return gymId;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setGymId(String gymId) {
-        this.gymId = gymId;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getSlotId() {
-        return slotId;
+    public String getScheduleID() {
+        return scheduleID;
     }
 
-    public void setSlotId(String slotId) {
-        this.slotId = slotId;
+    public void setScheduleID(String scheduleID) {
+        this.scheduleID = scheduleID;
     }
 
-    public String getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-
-    public String getBookingTime() {
-        return bookingTime;
-    }
-
-    public void setBookingTime(String bookingTime) {
-        this.bookingTime = bookingTime;
-    }
-
-    public String getBookingStatus() {
-        return bookingStatus;
-    }
-
-    public void setBookingStatus(String bookingStatus) {
-        this.bookingStatus = bookingStatus;
-    }
-
-    public String getBookingAmount() {
-        return bookingAmount;
-    }
-
-    public void setBookingAmount(String bookingAmount) {
-        this.bookingAmount = bookingAmount;
-    }
-
-    private String bookingDate;
-    private String bookingTime;
-    private String bookingStatus;
-    private String bookingAmount;
 }
 
 
