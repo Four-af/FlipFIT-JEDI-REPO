@@ -2,52 +2,53 @@ package com.flipkart.bean;
 
 public class User {
 
-    private String name;
-    private String address;
-    private String userId;
-    private String phoneNumber;
-    private String emailId;
+    private String userID;
+    private String userName;
+    private String email;
     private String password;
-    private String roleId;
+    private Role role;
 
-    public String getName() {
-        return name;
+    public User() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public User(String id, String userName, String email, String password, Role role) {
+        this.userID = id;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
-    public String getUserId() {
-        return userId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -57,11 +58,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getRoleId() {
-        return roleId;
-    }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    @Override
+    public String toString() {
+        return
+                "userID='" + userID + '\'' +
+                        ", userName='" + userName + '\'' +
+                        ", email='" + email + '\'' +
+                        ", password='" + password + '\'' +
+                        ", role=" + role;
     }
 }
