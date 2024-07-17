@@ -23,11 +23,11 @@ public class FlipFitApplication {
         switch (choice) {
             case 1: {
                 System.out.println("Enter your Login Credentials");
-                System.out.print("Enter your emailId:> ");
+                System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
-                System.out.print("Enter your password:> ");
+                System.out.println("Enter your password:> ");
                 String password = in.next();
-                System.out.print("Enter your role:> Customer/Admin/GymOwner ");
+                System.out.println("Enter your role:> Customer/Admin/GymOwner ");
                 String role = in.next();
 
                 switch (role) {
@@ -63,19 +63,15 @@ public class FlipFitApplication {
 
             }
             case 2: {
-//                System.out.println("Enter Customer Details");
-//                System.out.print("Enter your CustomerID:> ");
                 System.out.println("Enter your Credentials");
-                System.out.print("Enter your emailId:> ");
+                System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
-                System.out.print("Enter your password:> ");
+                System.out.println("Enter your password:> ");
                 String password = in.next();
-//                String customerID = UUID.randomUUID().toString();
-                System.out.print("Enter your Name:> ");
+                System.out.println("Enter your Name:> ");
                 String name = in.next();
-                System.out.print("Enter your Address:> ");
+                System.out.println("Enter your Address:> ");
                 String address = in.next();
-                ///
                 String customerId = UUID.randomUUID().toString();
                 Customer customer = new Customer();
                 customer.setCustomerID(customerId);
@@ -90,21 +86,17 @@ public class FlipFitApplication {
                 break;
             }
             case 3: {
-//                System.out.println("Enter Customer Details");
-//                System.out.print("Enter your CustomerID:> ");
                 System.out.println("Enter your Credentials");
-                System.out.print("Enter your emailId:> ");
+                System.out.println("Enter your emailId:> ");
                 String emailId = in.next();
-                System.out.print("Enter your password:> ");
+                System.out.println("Enter your password:> ");
                 String password = in.next();
-//                String customerID = UUID.randomUUID().toString();
-                System.out.print("Enter your Name:> ");
+                System.out.println("Enter your Name:> ");
                 String name = in.next();
-                System.out.print("Enter your Address:> ");
+                System.out.println("Enter your Address:> ");
                 String address = in.next();
-                System.out.print("Enter your Phone No.:> ");
+                System.out.println("Enter your Phone No.:> ");
                 String phone = in.next();
-                ///
                 String gymOwnerId = UUID.randomUUID().toString();
                 GymOwner gymOwner = new GymOwner();
                 gymOwner.setOwnerId(gymOwnerId);

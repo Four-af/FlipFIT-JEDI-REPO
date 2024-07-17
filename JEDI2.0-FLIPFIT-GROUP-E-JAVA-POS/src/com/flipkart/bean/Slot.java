@@ -7,14 +7,6 @@ public class Slot {
     private String time;
     private int capacity;
 
-    // Constructor
-    public Slot(int id, int gymId, String time, int capacity) {
-        this.id = id;
-        this.gymId = gymId;
-        this.time = time;
-        this.capacity = capacity;
-    }
-
     // Getter and Setter methods 
     public int getId() {
         return id;

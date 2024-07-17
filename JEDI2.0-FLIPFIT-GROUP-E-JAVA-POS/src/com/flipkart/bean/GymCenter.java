@@ -18,12 +18,6 @@ public class GymCenter {
      * @param gymName     The name of the gym.
      * @param gymLocation The location of the gym.
      */
-    public GymCenter(int gymId, int gymOwnerId, String gymName, String gymLocation) {
-        this.gymId = gymId;
-        this.gymOwnerId = gymOwnerId;
-        this.gymName = gymName;
-        this.gymLocation = gymLocation;
-    }
 
     /**
      * Retrieves the gymId of the gym.

@@ -3,25 +3,12 @@ package com.flipkart.bean;
 /**
  * Represents a gym owner in the FlipFit system.
  */
-public class GymOwner {
+public class GymOwner extends User {
 
     private String ownerId;          // Unique identifier for the gym owner
-    private String ownerName;     // Name of the gym owner
-    private String ownerPhone;    // Phone number of the gym owner
-    private String ownerAddress;  // Address of the gym owner
     private String ownerGstNum;   // GST number of the gym owner
     private String ownerPanNum;   // PAN number of the gym owner
     private String approvalStatus; // Approval status of the gym owner
-    private String emailId;           // User identifier associated with the gym owner
-    private String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 /**
      * Constructs a FlipFitGymOwner object with the given details.
@@ -54,59 +41,6 @@ public class GymOwner {
         this.ownerId = ownerId;
     }
 
-    /**
-     * Retrieves the ownerName of the gym owner.
-     *
-     * @return The ownerName of the gym owner.
-     */
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    /**
-     * Sets the ownerName for the gym owner.
-     *
-     * @param ownerName The ownerName to set.
-     */
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    /**
-     * Retrieves the ownerPhone of the gym owner.
-     *
-     * @return The ownerPhone of the gym owner.
-     */
-    public String getOwnerPhone() {
-        return ownerPhone;
-    }
-
-    /**
-     * Sets the ownerPhone for the gym owner.
-     *
-     * @param ownerPhone The ownerPhone to set.
-     */
-    public void setOwnerPhone(String ownerPhone) {
-        this.ownerPhone = ownerPhone;
-    }
-
-    /**
-     * Retrieves the ownerAddress of the gym owner.
-     *
-     * @return The ownerAddress of the gym owner.
-     */
-    public String getOwnerAddress() {
-        return ownerAddress;
-    }
-
-    /**
-     * Sets the ownerAddress for the gym owner.
-     *
-     * @param ownerAddress The ownerAddress to set.
-     */
-    public void setOwnerAddress(String ownerAddress) {
-        this.ownerAddress = ownerAddress;
-    }
 
     /**
      * Retrieves the ownerGstNum of the gym owner.
@@ -162,21 +96,4 @@ public class GymOwner {
         this.approvalStatus = approvalStatus;
     }
 
-    /**
-     * Retrieves the userId associated with the gym owner.
-     *
-     * @return The userId associated with the gym owner.
-     */
-    public String getEmailId() {
-        return emailId;
-    }
-
-    /**
-     * Sets the userId associated with the gym owner.
-     *
-     * @param emailId The userId to set.
-     */
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
 }
