@@ -10,35 +10,41 @@ public class Schedule {
     private int Availability;
     private LocalDate date;
 
+
     public Schedule(LocalDate date, String SlotId, int Availability) {
         this.ScheduleID=UUID.randomUUID().toString();
         this.date = date;
         this.SlotId = SlotId;
         this.Availability=Availability;
     }
-    public String getScheduleID() {
-        return ScheduleID;
-    }
+
 
     public void setScheduleID(String ScheduleID) {
         this.ScheduleID = ScheduleID;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getScheduleID() {
+        return ScheduleID;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+
+
+
+    public void setSlotId(String SlotId) {
+        this.SlotId = SlotId;
     }
 
     public String getSlotId() {
         return SlotId;
     }
 
-    public void setSlotId(String SlotId) {
-        this.SlotId = SlotId;
-    }
+
 
     public int getAvailability() {
         return Availability;
