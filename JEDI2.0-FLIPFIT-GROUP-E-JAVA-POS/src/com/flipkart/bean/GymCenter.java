@@ -9,7 +9,7 @@ public class GymCenter {
     private int gymOwnerId;     // Identifier for the owner of the gym
     private String gymName;     // Name of the gym
     private String gymLocation; // Location of the gym
-
+    private int capacity;
     /**
      * Constructs a FlipFitGym object with the given details.
      *
@@ -89,5 +89,14 @@ public class GymCenter {
      */
     public void setGymLocation(String gymLocation) {
         this.gymLocation = gymLocation;
+    }
+
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
