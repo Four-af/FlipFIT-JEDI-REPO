@@ -6,6 +6,13 @@ public class Booking {
     private String gymId;
     private String slotId;
 
+
+    Booking(String bookingId , String customerId , String gymId , String slotId){
+        this.bookingId = bookingId;
+        this.customerId = customerId;
+        this.gymId = gymId;
+        this.slotId = slotId;
+    }
     public String getBookingId() {
         return bookingId;
     }
