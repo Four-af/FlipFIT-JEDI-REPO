@@ -58,6 +58,64 @@ public class FlipFitApplication {
                         break;
                     }
                 }
+                break;
+
+            }
+            case 2: {
+//                System.out.println("Enter Customer Details");
+//                System.out.print("Enter your CustomerID:> ");
+                System.out.println("Enter your Credentials");
+                System.out.print("Enter your emailId:> ");
+                String emailId = in.next();
+                System.out.print("Enter your password:> ");
+                String password = in.next();
+//                String customerID = UUID.randomUUID().toString();
+                System.out.print("Enter your Name:> ");
+                String name = in.next();
+                System.out.print("Enter your Address:> ");
+                String address = in.next();
+                ///
+                String customerId = UUID.randomUUID().toString();
+                Customer customer = new Customer();
+                customer.setCustomerID(customerId);
+                customer.setEmailId(emailId);
+                customer.setPassword(password);
+
+                System.out.println("<<Customer Details>>");
+                System.out.println("Name: " + name);
+                System.out.println("Address: " + address);
+                System.out.println("Email Id: " + emailId);
+                FlipFitCustomerMenu.getFlipFitCustomerMenu();
+                break;
+            }
+            case 3: {
+//                System.out.println("Enter Customer Details");
+//                System.out.print("Enter your CustomerID:> ");
+                System.out.println("Enter your Credentials");
+                System.out.print("Enter your emailId:> ");
+                String emailId = in.next();
+                System.out.print("Enter your password:> ");
+                String password = in.next();
+//                String customerID = UUID.randomUUID().toString();
+                System.out.print("Enter your Name:> ");
+                String name = in.next();
+                System.out.print("Enter your Address:> ");
+                String address = in.next();
+                System.out.print("Enter your Phone No.:> ");
+                String phone = in.next();
+                ///
+                String gymOwnerId = UUID.randomUUID().toString();
+                GymOwner gymOwner = new GymOwner();
+                gymOwner.setOwnerId(gymOwnerId);
+                gymOwner.setEmailId(emailId);
+                gymOwner.setPassword(password);
+
+                System.out.println("<<Customer Details>>");
+                System.out.println("Name: " + name);
+                System.out.println("Address: " + address);
+                System.out.println("Email Id: " + emailId);
+                FlipFitCustomerMenu.getFlipFitCustomerMenu();
+                break;
             }
         }
     }
