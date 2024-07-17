@@ -1,99 +1,49 @@
 package com.flipkart.bean;
 
-/**
- * Represents a gym owner in the FlipFit system.
- */
+import java.util.List;
+
 public class GymOwner extends User {
+    private String panNumber;
+    private List<String> gymCentreIDs;
+    private String cardDetails;
+    private int isApproved;
 
-    private String ownerId;          // Unique identifier for the gym owner
-    private String ownerGstNum;   // GST number of the gym owner
-    private String ownerPanNum;   // PAN number of the gym owner
-    private String approvalStatus; // Approval status of the gym owner
-
-/**
-     * Constructs a FlipFitGymOwner object with the given details.
-     *
-     * @param ownerId        The unique identifier for the gym owner.
-     * @param ownerName      The name of the gym owner.
-     * @param ownerPhone     The phone number of the gym owner.
-     * @param ownerAddress   The address of the gym owner.
-     * @param ownerGstNum    The GST number of the gym owner.
-     * @param ownerPanNum    The PAN number of the gym owner.
-     * @param approvalStatus The approval status of the gym owner.
-     * @param userId         The user identifier associated with the gym owner.
-     */
-
-    /**
-     * Retrieves the ownerId of the gym owner.
-     *
-     * @return The ownerId of the gym owner.
-     */
-    public String getOwnerId() {
-        return ownerId;
+    public GymOwner(String id,String userName, String email, String password, String panNumber, String cardDetails) {
+//        super(id,userName, email, password, Role.GYMOWNER);
+//        this.panNumber = panNumber;
+//        this.cardDetails = cardDetails;
+//        this.isApproved = 0;
     }
 
-    /**
-     * Sets the ownerId for the gym owner.
-     *
-     * @param ownerId The ownerId to set.
-     */
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
+    public String getPanNumber() {
+        return panNumber;
     }
 
-
-    /**
-     * Retrieves the ownerGstNum of the gym owner.
-     *
-     * @return The ownerGstNum of the gym owner.
-     */
-    public String getOwnerGstNum() {
-        return ownerGstNum;
+    public int isApproved() {
+        return isApproved;
     }
 
-    /**
-     * Sets the ownerGstNum for the gym owner.
-     *
-     * @param ownerGstNum The ownerGstNum to set.
-     */
-    public void setOwnerGstNum(String ownerGstNum) {
-        this.ownerGstNum = ownerGstNum;
+    public void setApproved(int approved) {
+        isApproved = approved;
     }
 
-    /**
-     * Retrieves the ownerPanNum of the gym owner.
-     *
-     * @return The ownerPanNum of the gym owner.
-     */
-    public String getOwnerPanNum() {
-        return ownerPanNum;
+    public void setPanNumber(String panNumber) {
+        this.panNumber = panNumber;
     }
 
-    /**
-     * Sets the ownerPanNum for the gym owner.
-     *
-     * @param ownerPanNum The ownerPanNum to set.
-     */
-    public void setOwnerPanNum(String ownerPanNum) {
-        this.ownerPanNum = ownerPanNum;
+    public List<String> getGymCentreIDs() {
+        return gymCentreIDs;
     }
 
-    /**
-     * Retrieves the approvalStatus of the gym owner.
-     *
-     * @return The approvalStatus of the gym owner.
-     */
-    public String getApprovalStatus() {
-        return approvalStatus;
+    public void setGymCentreIDs(List<String> gymCentreIDs) {
+        this.gymCentreIDs = gymCentreIDs;
     }
 
-    /**
-     * Sets the approvalStatus for the gym owner.
-     *
-     * @param approvalStatus The approvalStatus to set.
-     */
-    public void setApprovalStatus(String approvalStatus) {
-        this.approvalStatus = approvalStatus;
+    public void addGymCentreId(String gymCentreId) {
+        this.gymCentreIDs.add(gymCentreId);
     }
 
+    public String getCardDetails() { return cardDetails; }
+
+    public void setCardDetails(String cardDetails) { this.cardDetails = cardDetails; }
 }
