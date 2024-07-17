@@ -8,6 +8,13 @@ public class User {
     private String password;
     private String roleId;
 
+    User(String name , int userId , String emailId ,String password , String roleId){
+        this.name = name;
+        this.emailId = emailId;
+        this.password = password;
+        this.roleId = roleId;
+    }
+
     public String getName() {
         return name;
     }
