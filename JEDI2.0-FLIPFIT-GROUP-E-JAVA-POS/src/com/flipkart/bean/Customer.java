@@ -11,21 +11,39 @@ public class Customer {
 
     // the RElavant properties Related to the App Customer App
     // private proteced / public is same in Java as u used in C++
-    private int customerID;
+    private String customerID;
     private String customerName;
     private String customerAddress;
+    private String emailId;
+    private String password;
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * @return the customerID
      */
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
     /**
      * @param customerID the customerID to set
      */
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 

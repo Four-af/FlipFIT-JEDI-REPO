@@ -5,7 +5,7 @@ public class Booking {
     private String customerId;
     private String gymId;
     private String slotId;
-
+    
     public String getBookingId() {
         return bookingId;
     }

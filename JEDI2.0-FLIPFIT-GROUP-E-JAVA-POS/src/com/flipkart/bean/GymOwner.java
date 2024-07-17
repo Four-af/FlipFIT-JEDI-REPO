@@ -5,16 +5,25 @@ package com.flipkart.bean;
  */
 public class GymOwner {
 
-    private String ownerId;          // Unique identifier for the gym owner
+    private int ownerId;          // Unique identifier for the gym owner
     private String ownerName;     // Name of the gym owner
     private String ownerPhone;    // Phone number of the gym owner
     private String ownerAddress;  // Address of the gym owner
     private String ownerGstNum;   // GST number of the gym owner
     private String ownerPanNum;   // PAN number of the gym owner
     private String approvalStatus; // Approval status of the gym owner
-    private String userId;           // User identifier associated with the gym owner
+    private String emailId;           // User identifier associated with the gym owner
+    private String password;
 
-    /**
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+/**
      * Constructs a FlipFitGymOwner object with the given details.
      *
      * @param ownerId        The unique identifier for the gym owner.
@@ -26,23 +35,13 @@ public class GymOwner {
      * @param approvalStatus The approval status of the gym owner.
      * @param userId         The user identifier associated with the gym owner.
      */
-    public GymOwner(String ownerId, String ownerName, String ownerPhone, String ownerAddress, String ownerGstNum, String ownerPanNum, String approvalStatus, String userId) {
-        this.ownerId = ownerId;
-        this.ownerName = ownerName;
-        this.ownerPhone = ownerPhone;
-        this.ownerAddress = ownerAddress;
-        this.ownerGstNum = ownerGstNum;
-        this.ownerPanNum = ownerPanNum;
-        this.approvalStatus = approvalStatus;
-        this.userId = userId;
-    }
 
     /**
      * Retrieves the ownerId of the gym owner.
      *
      * @return The ownerId of the gym owner.
      */
-    public String getOwnerId() {
+    public int getOwnerId() {
         return ownerId;
     }
 
@@ -51,7 +50,7 @@ public class GymOwner {
      *
      * @param ownerId The ownerId to set.
      */
-    public void setOwnerId(String ownerId) {
+    public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
 
@@ -168,16 +167,16 @@ public class GymOwner {
      *
      * @return The userId associated with the gym owner.
      */
-    public String getUserId() {
-        return userId;
+    public String getEmailId() {
+        return emailId;
     }
 
     /**
      * Sets the userId associated with the gym owner.
      *
-     * @param userId The userId to set.
+     * @param emailId The userId to set.
      */
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 }

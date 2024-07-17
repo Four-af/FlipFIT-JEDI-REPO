@@ -2,26 +2,27 @@ package com.flipkart.bean;
 
 public class Admin {
     private String adminId;
-    private String userId;
+    private String emailId;
+    private String password;
 
-    public Admin(String adminId ,String userId) {
-        this.adminId = adminId;
-        this.userId = userId;
-    }
 
     public String getAdminId() {
         return adminId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public void setAdminId(String adminId) {
         this.adminId = adminId;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
