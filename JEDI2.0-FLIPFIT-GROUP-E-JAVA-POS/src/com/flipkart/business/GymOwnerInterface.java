@@ -1,18 +1,14 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Booking;
-import com.flipkart.bean.Customer;
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.User;
+import com.flipkart.bean.GymOwner;
 
 import java.util.List;
 
 public interface GymOwnerInterface {
-    public List<Booking> viewBookedSlots(int userId);
-    public Booking checkBookingConflicts(int userId, int slotTime);
-    public List<GymCenter> viewCentres();
-    public boolean makePayment(int userId);
-    public Customer editDetails(Customer flipFitGymCustomer);
-    public User login(User flipFitUser);
-    public Customer registerCustomer(Customer flipFitGymCustomer);
+
+    void requestGymOwnerApproval(String gymOwnerId);
+    List<GymOwner> viewAllGymOwners();
+    boolean loginGymOwner(String userId, String password);
+
+    void registerGymOwner(String userId,String userName, String password, String email, String panNumber,String cardNumber);
 }

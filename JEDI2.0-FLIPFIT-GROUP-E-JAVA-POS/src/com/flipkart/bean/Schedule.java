@@ -9,7 +9,7 @@ public class Schedule {
     private String SlotId;
     private int Availability;
     private LocalDate date;
-    
+
     public Schedule(LocalDate date, String SlotId, int Availability) {
         this.ScheduleID=UUID.randomUUID().toString();
         this.date = date;
