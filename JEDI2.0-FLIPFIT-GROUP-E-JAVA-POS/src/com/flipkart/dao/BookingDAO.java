@@ -1,6 +1,7 @@
 package com.flipkart.dao;
 
 import com.flipkart.bean.Booking;
+import com.flipkart.utils.UserPlan;
 
 import java.time.LocalTime;
 import java.util.Date;
