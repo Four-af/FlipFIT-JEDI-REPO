@@ -2,8 +2,6 @@ package com.flipkart.bean;
 
 public class Admin {
     private String adminId;
-<<<<<<< HEAD
-=======
     private String userId;
 
     public Admin(String adminId ,String userId) {
@@ -26,6 +24,4 @@ public class Admin {
     public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
-
->>>>>>> fb15d495cd9ef12aeb80edbdf0206e493703914a
 }
