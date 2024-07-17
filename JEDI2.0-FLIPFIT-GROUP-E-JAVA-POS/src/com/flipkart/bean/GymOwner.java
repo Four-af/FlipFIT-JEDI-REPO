@@ -8,12 +8,6 @@ public class GymOwner extends User {
     private String cardDetails;
     private int isApproved;
 
-    public GymOwner(String id,String userName, String email, String password, String panNumber, String cardDetails) {
-//        super(id,userName, email, password, Role.GYMOWNER);
-//        this.panNumber = panNumber;
-//        this.cardDetails = cardDetails;
-//        this.isApproved = 0;
-    }
 
     public String getPanNumber() {
         return panNumber;

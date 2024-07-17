@@ -68,4 +68,11 @@ public class User {
                         ", password='" + password + '\'' +
                         ", role=" + role;
     }
+
+    public void setEmailId(String email) {
+        this.email = email;
+    }
+    public String getEmailId() {
+        return this.email;
+    }
 }
