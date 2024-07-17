@@ -1,4 +1,4 @@
 package com.flipkart.utils;
 
-public class Demo {
+public class UserPlan {
 }
