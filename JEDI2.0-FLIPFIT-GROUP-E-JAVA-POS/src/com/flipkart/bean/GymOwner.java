@@ -5,7 +5,7 @@ package com.flipkart.bean;
  */
 public class GymOwner {
 
-    private int ownerId;          // Unique identifier for the gym owner
+    private String ownerId;          // Unique identifier for the gym owner
     private String ownerName;     // Name of the gym owner
     private String ownerPhone;    // Phone number of the gym owner
     private String ownerAddress;  // Address of the gym owner
@@ -41,7 +41,7 @@ public class GymOwner {
      *
      * @return The ownerId of the gym owner.
      */
-    public int getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
@@ -50,7 +50,7 @@ public class GymOwner {
      *
      * @param ownerId The ownerId to set.
      */
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
