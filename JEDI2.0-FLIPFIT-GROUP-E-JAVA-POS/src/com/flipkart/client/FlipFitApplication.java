@@ -36,10 +36,8 @@ public class FlipFitApplication {
 
                 switch (role) {
                     case "ADMIN": {
-                        String adminId = UUID.randomUUID().toString();
                         Admin admin = new Admin();
 
-                        admin.setAdminId(adminId);
                         admin.setEmailId(emailId);
                         admin.setPassword(password);
 
@@ -48,10 +46,8 @@ public class FlipFitApplication {
                         break;
                     }
                     case "CUSTOMER": {
-                        String customerId = UUID.randomUUID().toString();
                         Customer customer = new Customer();
 
-                        customer.setCustomerID(customerId);
                         customer.setEmailId(emailId);
                         customer.setPassword(password);
 
@@ -60,10 +56,8 @@ public class FlipFitApplication {
                         break;
                     }
                     case "GYM OWNER": {
-                        String gymOwnerId = UUID.randomUUID().toString();
                         GymOwner gymOwner = new GymOwner();
 
-                        gymOwner.setOwnerId(gymOwnerId);
                         gymOwner.setEmailId(emailId);
                         gymOwner.setPassword(password);
 
@@ -90,10 +84,8 @@ public class FlipFitApplication {
                 System.out.println("Enter your Address:> ");
                 String address = in.next();
 
-                String customerId = UUID.randomUUID().toString();
                 Customer customer = new Customer();
 
-                customer.setCustomerID(customerId);
                 customer.setEmailId(emailId);
                 customer.setPassword(password);
 
@@ -124,10 +116,8 @@ public class FlipFitApplication {
                 System.out.println("Enter your Phone No.:> ");
                 String phone = in.next();
 
-                String gymOwnerId = UUID.randomUUID().toString();
                 GymOwner gymOwner = new GymOwner();
 
-                gymOwner.setOwnerId(gymOwnerId);
                 gymOwner.setEmailId(emailId);
                 gymOwner.setPassword(password);
 
