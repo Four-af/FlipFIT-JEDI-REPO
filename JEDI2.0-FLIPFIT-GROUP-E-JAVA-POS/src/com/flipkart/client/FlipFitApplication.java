@@ -52,6 +52,7 @@ public class FlipFitApplication {
                     case "GYM OWNER": {
                         String gymOwnerId = UUID.randomUUID().toString();
                         GymOwner gymOwner = new GymOwner();
+                        gymOwner.setOwnerId(gymOwnerId);
                         gymOwner.setEmailId(emailId);
                         gymOwner.setPassword(password);
                         FlipFitGymOwnerMenu.getGymOwnerMenu();
