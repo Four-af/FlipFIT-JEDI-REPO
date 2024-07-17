@@ -8,7 +8,6 @@ import java.util.List;
 
 public class AdminService implements AdminInterface{
 
-
     private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
     private List<GymCenter> pendinGymCentreList = new ArrayList<>();
 
@@ -17,7 +16,6 @@ public class AdminService implements AdminInterface{
     }
 
     public void approveGymOwner(String gymOwnerId,int isApprove){
-        //takes GymOwner Object as input and return boolean
         System.out.println("Gym owner approved");
     }
 
@@ -27,7 +25,6 @@ public class AdminService implements AdminInterface{
     }
 
     public List<GymOwner> viewPendingGymOwners(){
-        //views all pending requests
         System.out.println("Viewing pending Gym Owner Approvals: ");
         return pendinGymOwnerList;
     }
