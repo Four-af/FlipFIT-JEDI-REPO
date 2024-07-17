@@ -5,14 +5,11 @@ public class Booking {
     private String customerId;
     private String gymId;
     private String slotId;
+    private String bookingDate;
+    private String bookingTime;
+    private String bookingStatus;
+    private String bookingAmount;
 
-
-    Booking(String bookingId , String customerId , String gymId , String slotId){
-        this.bookingId = bookingId;
-        this.customerId = customerId;
-        this.gymId = gymId;
-        this.slotId = slotId;
-    }
     public String getBookingId() {
         return bookingId;
     }
@@ -77,10 +74,6 @@ public class Booking {
         this.bookingAmount = bookingAmount;
     }
 
-    private String bookingDate;
-    private String bookingTime;
-    private String bookingStatus;
-    private String bookingAmount;
 }
 
 
