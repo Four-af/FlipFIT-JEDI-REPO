@@ -1,14 +1,8 @@
 package com.flipkart.bean;
 
 public class Admin extends User {
-    private String adminId;
 
-    public String getAdminId() {
-        return adminId;
+    public Admin() {
+        super("123","admin", "admin@flipfit.com", "12345", Role.ADMIN);
     }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
 }
