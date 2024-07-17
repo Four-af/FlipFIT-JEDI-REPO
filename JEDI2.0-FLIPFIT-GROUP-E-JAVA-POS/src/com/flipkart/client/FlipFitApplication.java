@@ -114,8 +114,9 @@ public class FlipFitApplication {
                 System.out.println("<<Customer Details>>");
                 System.out.println("Name: " + name);
                 System.out.println("Address: " + address);
+                System.out.println("Phone No: " + phone);
                 System.out.println("Email Id: " + emailId);
-                FlipFitCustomerMenu.getFlipFitCustomerMenu();
+                FlipFitGymOwnerMenu.getGymOwnerMenu();
                 break;
             }
         }
