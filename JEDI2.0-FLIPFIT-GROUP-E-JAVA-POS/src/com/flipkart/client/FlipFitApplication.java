@@ -37,10 +37,10 @@ public class FlipFitApplication {
             System.out.println("Enter your Role");
             Role role = Role.valueOf(scanner.next().toUpperCase());
 
-            System.out.println("Enter your UserName");
+            System.out.println("Enter your Username");
             String userName = scanner.next();
 
-            System.out.println("Enter your Passkey");
+            System.out.println("Enter your Password");
             String password = scanner.next();
 
             switch (role){
@@ -54,11 +54,11 @@ public class FlipFitApplication {
                     customerClient.customerLogin(userName,password);
                     break;
                 default:
-                    System.out.println("INVALID_CHOICE_ERROR");
+                    System.out.println("Invalid Option Selected");
                     break;
             }
         }catch (IllegalArgumentException | ParseException e){
-            System.out.println("INVALID CHOICE ERROR");
+            System.out.println("Invalid Option Selected");
         }
     }
 
@@ -79,16 +79,16 @@ public class FlipFitApplication {
                     gymOwnerClient.register();
                     break;
                 default:
-                    System.out.println("INVALID CHOICE ERROR");
+                    System.out.println("Invalid Option Selected");
                     break;
             }
         }catch (IllegalArgumentException | ParseException e){
-            System.out.println("INVALID CHOICE ERROR");
+            System.out.println("Invalid Option Selected");
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("WELCOME MESSAGE");
+        System.out.println("Welcome to FlipFit Application!\n");
         mainPage();
     }
 

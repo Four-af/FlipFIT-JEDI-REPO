@@ -24,7 +24,6 @@ public class FlipFitCustomerMenu {
     Scanner scanner = new Scanner(System.in);
 
     public boolean customerLogin(String userName, String password) throws ParseException {
-//        Check if credentials are right
         if (customerService.isUserValid(userName, password)) {
             System.out.println("Successfully logged in");
             customerClientMainPage(userName);
@@ -40,7 +39,7 @@ public class FlipFitCustomerMenu {
         System.out.println("Enter your UserName");
         String userName = scanner.next();
 
-        System.out.println("Enter your Passkey");
+        System.out.println("Enter your Password");
         String password = scanner.next();
 
         System.out.println("Enter your Email");
@@ -69,13 +68,10 @@ public class FlipFitCustomerMenu {
     }
 
     private void bookSlotSubMenu(String userName) throws ParseException {
-        //Get Location for filter
         System.out.println("Provide Location to search :");
         String location = scanner.next();
         List<GymCenter> centreListByLocation = customerService.getAllGymCenterDetailsByCity(location);
-        // Print All Centres
         Util.printGymCentres(centreListByLocation);
-        //Select Gym Centre
         if(centreListByLocation.isEmpty()){
             System.out.println("There are no available GYM Centres in " + location + ". Please Select some other location");
             bookSlotSubMenu(userName);
@@ -83,9 +79,7 @@ public class FlipFitCustomerMenu {
         }
         System.out.print("Choose a gymCentre ID to proceed:");
         String chosenGym = scanner.next();
-        //Select Date
         Date sqlDate = selectDate();
-        //Choose Slot
         chooseSlot(chosenGym,userName,sqlDate,chosenGym);
     }
 
@@ -112,7 +106,6 @@ public class FlipFitCustomerMenu {
         }
         System.out.println("Enter SlotID");
         String slotID = scanner.next();
-        //Select Slot to book
         if(!customerService.bookSlot(userName,sqlDate,slotID,centreId)) chooseSlot(gymCentreId, userName, sqlDate,centreId);
     }
 

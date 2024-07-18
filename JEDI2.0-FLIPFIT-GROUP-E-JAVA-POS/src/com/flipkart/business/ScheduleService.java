@@ -1,6 +1,7 @@
 package com.flipkart.business;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +18,15 @@ public class ScheduleService implements ScheduleInterface {
     public Schedule createSchedule(Date date, String slotId){
         String centreID = slotService.getSlotByID(slotId).getCenterID();
         int availability = gymCentreService.getGymCentreById(centreID).getCapacity();
-        Schedule schedule = new Schedule( date, slotId, availability);
+        Schedule schedule = new Schedule(date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate(), slotId, availability);
         scheduleDAO.addSchedule(schedule);
 
         return schedule;
     }
 
     public Schedule getScheduleByDateAndSlotId(String SlotId, Date date){
-        //returns whether current schedule exists or not
         List<Schedule> scheduleList = scheduleDAO.getAllScheduleByDate((java.sql.Date) date);
         for(Schedule schedule: scheduleList){
             if(schedule.getSlotId().equals(SlotId))

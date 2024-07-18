@@ -30,10 +30,10 @@ public class FlipFitGymOwnerMenu {
     }
 
     public void register() {
-        System.out.println("Enter your UserName");
+        System.out.println("Enter your Username");
         String userName = scanner.next();
 
-        System.out.println("Enter your Passkey");
+        System.out.println("Enter your Password");
         String password = scanner.next();
 
         System.out.println("Enter your Email");
@@ -54,11 +54,11 @@ public class FlipFitGymOwnerMenu {
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = currentTime.format(myFormat);
-        System.out.println("WELCOME " + gymOwnerId+" !!\nWhat you what to do\nLogin TIME: " + currentTime);
+        System.out.println("Welcome " + gymOwnerId+" !!\nPlease choose from the following options\nLogin TIME: " + currentTime);
         while(true){
             System.out.println("" +
-                    "0. View all my Gym Centres\n" +
-                    "1. Send Gym Owner Approval Request\n" +
+                    "0. View all Gym Centres\n" +
+                    "1. Send Gym Owner Approval Request to Admin\n" +
                     "2. Add new Gym Center\n" +
                     "3. Send Gym Centre Approval Request to Admin\n" +
                     "4. Add Slots to a Gym Centre\n" +
@@ -66,7 +66,6 @@ public class FlipFitGymOwnerMenu {
             );
             int choice = scanner.nextInt();
             switch (choice){
-                /* Take input from user for all service parameters ( Make the menu ) */
 
                 case 0:
                     List<GymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
@@ -156,10 +155,10 @@ public class FlipFitGymOwnerMenu {
                     slotService.addSlotsForGym(centreId, newSlotList);
                     break;
                 case 5:
-                    System.out.println("PREVIOUS_MENU_MESSAGE");
+                    System.out.println("Going back to Previous menu");
                     return;
                 default:
-                    System.out.println("INVALID_CHOICE_ERROR");
+                    System.out.println("Invalid Option selected");
                     break;
             }
         }

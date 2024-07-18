@@ -40,11 +40,13 @@ public class FlipFitAdminMenu {
         System.out.println("1. Approve the request\n2. Reject the request");
         int choice = scanner.nextInt();
         if(choice == 1){
+            adminService.approveGymOwner(requestGymOwnerId, true);
             System.out.println("Approved Gym Owner");
         } else if (choice == 2) {
+            adminService.approveGymOwner(requestGymOwnerId, false);
             System.out.println("Disapproved Gym Owner");
         }
-        adminService.approveGymOwner(requestGymOwnerId,choice);
+
     }
     private void handleGymCenterApprovalRequests(){
         // print the list with indexes from 1
@@ -55,11 +57,12 @@ public class FlipFitAdminMenu {
         System.out.println("1. Approve the request\n2. Reject the request\n");
         int choice = scanner.nextInt();
         if(choice == 1){
+            adminService.approveGymCenter(requestGymCenterId, true);
             System.out.println("Approved Gym Centre");
         } else if (choice == 2) {
+            adminService.approveGymCenter(requestGymCenterId, false);
             System.out.println("Disapproved Gym Centre");
         }
-        adminService.approveGymCenter(requestGymCenterId,choice);
         //modify the list
 //            adminClientMainPage();
     }
