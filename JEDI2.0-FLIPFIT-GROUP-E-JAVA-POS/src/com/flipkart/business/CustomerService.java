@@ -4,6 +4,7 @@ import com.flipkart.bean.Booking;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
+import com.flipkart.dao.CustomerDAO;
 import com.flipkart.utils.UserPlan;
 
 import java.util.Date;
@@ -15,6 +16,7 @@ public class CustomerService implements CustomerInterface {
     private BookingInterface bookingService = new BookingService();
     private ScheduleInterface scheduleService = new ScheduleService();
     private SlotInterface slotService = new SlotService();
+    private CustomerDAO customerDAO = new CustomerDAO();
 
     public List<GymCenter> getAllGymCenterDetailsByCity(String city){
         //takes City (Location) as input and returns List<GymCenter>
@@ -33,12 +35,24 @@ public class CustomerService implements CustomerInterface {
 
     @Override
     public boolean bookSlot(String userID, java.sql.Date date, String slotId, String centreId) {
-        return false;
+        if(!slotService.isSlotValid(slotId,centreId)){
+            System.out.println("INVALID_SLOT");
+            return false;
+        }
+        String scheduleId = scheduleService.getOrCreateSchedule(slotId,date).getScheduleID();
+        //create booking
+        boolean isOverlap = bookingService.checkBookingOverlap(userID,date,slotId);
+        if(isOverlap) {
+            System.out.println("There exists a conflicting booking, First cancel it!!!!");
+            return false;
+        }
+        bookingService.addBooking(userID, scheduleId);
+        return true;
     }
 
     @Override
     public void cancelBookingByID(String bookingID) {
-
+        bookingService.cancelBooking(bookingID);
     }
 
     public List<UserPlan> getCustomerPlan(String customerId){
@@ -69,16 +83,24 @@ public class CustomerService implements CustomerInterface {
     }
 
     public void registerCustomer(String userName, String password, String email, String phoneNumber, String cardNumber) {
-        System.out.println("Customer Registered");
+        try {
+            customerDAO.registerCustomer(userName,password,email,phoneNumber,cardNumber);
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override
     public Customer viewMyProfile(String userName) {
-        return null;
+        return customerDAO.getCustomerById(userName);
     }
 
     public boolean isUserValid(String userName, String password) {
-        //TODO
-        return true;
+        try {
+            return customerDAO.isUserValid(userName,password);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
 }

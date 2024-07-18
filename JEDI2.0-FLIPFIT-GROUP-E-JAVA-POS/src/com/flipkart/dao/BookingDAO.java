@@ -5,6 +5,7 @@ import com.flipkart.bean.Schedule;
 import com.flipkart.utils.UserPlan;
 
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -78,10 +79,10 @@ public class BookingDAO {
         return false; // No overlap
     }
 
-    public void cancelBookingById(String bookingID) throws BookingFailedException {
+    public void cancelBookingById(String bookingID) {
         Booking bookingToRemove = null;
         for (Booking booking : bookingList) {
-            if (booking.getBookingId().equals(bookingID)) {
+            if (booking.getBookingID().equals(bookingID)) {
                 bookingToRemove = booking;
                 break;
             }
@@ -90,15 +91,17 @@ public class BookingDAO {
             bookingList.remove(bookingToRemove);
             System.out.println("Booking canceled successfully");
         } else {
-            throw new BookingFailedException("Could not cancel booking for BookingId: " + bookingID);
+            System.out.println("Could not cancel booking for BookingId: " + bookingID);
         }
     }
 
-    public Booking getBookingByBookingId(String bookingId) throws BookingFailedException {
+    public Booking getBookingByBookingId(String bookingId) {
         for (Booking booking : bookingList) {
-            if (booking.getBookingId().equals(bookingId)) {
+            if (booking.getBookingID().equals(bookingId)) {
                 return booking;
             }
         }
-        throw new BookingFailedException("Could not fetch booking by bookingId: " + bookingId);
+        System.out.println("Could not fetch booking by bookingId: " + bookingId);
+        return null;
     }
+}
