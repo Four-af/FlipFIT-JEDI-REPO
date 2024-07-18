@@ -2,38 +2,36 @@ package com.flipkart.business;
 
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
-
-import java.sql.Date;
+import com.flipkart.dao.GymCenterDAO;
 import java.util.List;
 
 public class GymCenterService implements GymCenterInterface{
+    private static GymCenterDAO gymCenterDAO = new GymCenterDAO();
+    private static ScheduleInterface scheduleService = new ScheduleService();
 
     public List<GymCenter> getAllCentresByOwmerId(String gymOwnerId) {
-        return List.of();
+        return gymCenterDAO.getAllCentresByOwnerId(gymOwnerId);
     }
 
     public List<GymCenter> getCentresByCity(String city){
-        return List.of();
+        return gymCenterDAO.getGymCentreListByCity(city);
     }
 
-    @Override
     public List<Slot> getAvailableSlotsByCentreAndDate(String centreID, java.util.Date date) {
-        return List.of();
-    }
-
-    public List<Slot> getAvailableSlotsByCentreAndDate(String centreID, Date date){
-        return List.of();
+        return scheduleService.getAllAvailableSlotsByDate(centreID, date);
     }
 
     public void addCenter(GymCenter gymCentre) {
         //takes gymCenter details
+        gymCenterDAO.addGymCentre(gymCentre);
     }
 
     public void requestGymCentreApproval(String gymCentreId){
+        gymCenterDAO.sendCentreApprovalRequest(gymCentreId);
     }
 
     public GymCenter getGymCentreById(String centreID) {
-        GymCenter gymCenter = new GymCenter("123 ","234","hellpGym","11","blr",100,200, true);
+        GymCenter gymCenter = gymCenterDAO.getGymCentreByCentreId(centreID);
         return gymCenter;
     }
 }
