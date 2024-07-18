@@ -78,11 +78,11 @@ public class FlipFitAdminMenu {
             System.out.printf("%-8s\t", gymOwner.getUserName());
             System.out.printf("%-8s\t", gymOwner.getEmail());
             System.out.printf("%-8s\t", gymOwner.getPanNumber());
-            if(gymOwner.isApproved()==1)
+            if(gymOwner.isApproved())
             {
                 System.out.println("Yes\n");
             }
-            else if(gymOwner.isApproved() == 0)
+            else if(!gymOwner.isApproved())
             {
                 System.out.println("No\n");
             } else {

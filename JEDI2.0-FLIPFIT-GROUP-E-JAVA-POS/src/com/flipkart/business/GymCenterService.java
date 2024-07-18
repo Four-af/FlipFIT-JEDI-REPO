@@ -33,7 +33,7 @@ public class GymCenterService implements GymCenterInterface{
     }
 
     public GymCenter getGymCentreById(String centreID) {
-        GymCenter gymCenter = new GymCenter(" "," "," "," "," ",0,0);
+        GymCenter gymCenter = new GymCenter("123 ","234","hellpGym","11","blr",100,200, true);
         return gymCenter;
     }
 }

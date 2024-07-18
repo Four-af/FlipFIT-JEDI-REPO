@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class FlipFitApplication {
-    public static int userId = 0;
     public static Scanner scanner = new Scanner(System.in);
     private static FlipFitAdminMenu adminClient = new FlipFitAdminMenu();
     private static FlipFitCustomerMenu customerClient = new FlipFitCustomerMenu();
@@ -59,7 +58,7 @@ public class FlipFitApplication {
                     break;
             }
         }catch (IllegalArgumentException | ParseException e){
-            System.out.println("INVALID_CHOICE_ERROR");
+            System.out.println("INVALID CHOICE ERROR");
         }
     }
 
@@ -80,16 +79,16 @@ public class FlipFitApplication {
                     gymOwnerClient.register();
                     break;
                 default:
-                    System.out.println("INVALID_CHOICE_ERROR");
+                    System.out.println("INVALID CHOICE ERROR");
                     break;
             }
         }catch (IllegalArgumentException | ParseException e){
-            System.out.println("INVALID_CHOICE_ERROR");
+            System.out.println("INVALID CHOICE ERROR");
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("WELCOME_MESSAGE");
+        System.out.println("WELCOME MESSAGE");
         mainPage();
     }
 

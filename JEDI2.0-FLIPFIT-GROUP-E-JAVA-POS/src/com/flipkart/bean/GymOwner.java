@@ -6,7 +6,7 @@ public class GymOwner extends User {
     private String panNumber;
     private List<String> gymCentreIDs;
     private String cardDetails;
-    private int isApproved;
+    private boolean isApproved;
 
     public GymOwner() {
 
@@ -16,18 +16,23 @@ public class GymOwner extends User {
         super(id,userName, email, password, Role.GYM_OWNER);
         this.panNumber = panNumber;
         this.cardDetails = cardDetails;
-        this.isApproved = 0;
+        this.isApproved = false;
+    }
+
+    @Override
+    public String getUserID() {
+        return super.getUserID();
     }
 
     public String getPanNumber() {
         return panNumber;
     }
 
-    public int isApproved() {
+    public boolean isApproved() {
         return isApproved;
     }
 
-    public void setApproved(int approved) {
+    public void setApproved(boolean approved) {
         isApproved = approved;
     }
 
