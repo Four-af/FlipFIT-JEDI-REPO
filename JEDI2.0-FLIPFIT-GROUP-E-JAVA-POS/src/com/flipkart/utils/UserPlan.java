@@ -1,7 +1,7 @@
 package com.flipkart.utils;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class UserPlan {
     public String getSlotId() {
@@ -37,11 +37,11 @@ public class UserPlan {
         this.scheduleID = scheduleID;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -49,9 +49,9 @@ public class UserPlan {
     private String centreID;
     private LocalTime time;
     private String scheduleID;
-    private Date date;
+    private LocalDate date;
 
-    public UserPlan(String slotId,String centreID,LocalTime time,String scheduleID,Date date){
+    public UserPlan(String slotId, String centreID, LocalTime time, String scheduleID, LocalDate date){
         this.time = time;
         this.slotId = slotId;
         this.date = date;

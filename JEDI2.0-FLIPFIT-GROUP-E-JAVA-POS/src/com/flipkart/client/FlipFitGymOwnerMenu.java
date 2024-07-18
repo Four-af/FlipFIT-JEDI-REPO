@@ -14,7 +14,7 @@ import java.util.List;
 import static com.flipkart.client.FlipFitApplication.scanner;
 
 public class FlipFitGymOwnerMenu {
-    //private List<GymOwner> gymOwnerList = gymOwnerDAO.getGymOwnerList();
+
     private GymOwnerInterface gymOwnerService = new GymOwnerService();
     private SlotInterface slotService = new SlotService();
     private GymCenterInterface gymCentreService = new GymCenterService();
@@ -54,7 +54,7 @@ public class FlipFitGymOwnerMenu {
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = currentTime.format(myFormat);
-        System.out.println("WELCOME "+gymOwnerId+" !!\nWhat you what to do\nLogin TIME: "+currentTime);
+        System.out.println("WELCOME " + gymOwnerId+" !!\nWhat you what to do\nLogin TIME: " + currentTime);
         while(true){
             System.out.println("" +
                     "0. View all my Gym Centres\n" +
