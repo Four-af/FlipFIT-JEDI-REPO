@@ -23,10 +23,10 @@ public class FlipFitApplication {
                 registration();
                 break;
             case 3:
-                System.out.println("EXIT_MESSAGE");
+                System.out.println("Thanks for visiting!");
                 return;
             default:
-                System.out.println("INVALID_CHOICE_ERROR");
+                System.out.println("Invalid choice selected");
                 break;
         }
         mainPage();

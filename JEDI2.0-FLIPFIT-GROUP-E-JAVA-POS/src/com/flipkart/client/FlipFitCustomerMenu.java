@@ -10,7 +10,7 @@ import com.flipkart.business.CustomerService;
 import com.flipkart.utils.Util;
 import com.flipkart.utils.UserPlan;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -36,7 +36,7 @@ public class FlipFitCustomerMenu {
 
 
     public void register() throws ParseException {
-        System.out.println("Enter your UserName");
+        System.out.println("Enter your Username");
         String userName = scanner.next();
 
         System.out.println("Enter your Password");
@@ -79,20 +79,16 @@ public class FlipFitCustomerMenu {
         }
         System.out.print("Choose a gymCentre ID to proceed:");
         String chosenGym = scanner.next();
-        Date sqlDate = selectDate();
-        chooseSlot(chosenGym,userName,sqlDate,chosenGym);
+        Date date = selectDate();
+        chooseSlot(chosenGym,userName,date,chosenGym);
     }
 
     private Date selectDate() throws ParseException {
         //Select Date
-        System.out.print("Enter Date (dd/MM/yyyy): ");
+//        System.out.print("Enter Date (dd/MM/yyyy): ");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date date;
-        Date sqlDate = null;
-        String dat = scanner.next();
-        date = sdf.parse(dat);
-        sqlDate = new Date(date.getTime());
-        return sqlDate;
+        Date date = new Date();
+        return date;
     }
 
     private void chooseSlot(String gymCentreId,String userName,Date sqlDate,String centreId) throws ParseException {
@@ -170,7 +166,7 @@ public class FlipFitCustomerMenu {
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = currentTime.format(myFormat);
-        System.out.println("WELCOME "+ userName+" !!\nWhat you what to do\nLogin TIME: "+ currentTime);
+        System.out.println("WELCOME "+ userName+" !!\nPlease choose among the following options\nLogin TIME: "+ currentTime);
         while(true){
             System.out.println("1. View My Profile \n2. Book a slot in a Gym \n3. View Bookings\n4. Cancel Bookings\n5. Go Back to previous menu");
             int choice = scanner.nextInt();
@@ -183,7 +179,7 @@ public class FlipFitCustomerMenu {
                     bookSlotSubMenu(userName);
                     break;
                 case 3:
-                    printUserPlan(userName);
+                    printbookingsSubMenu(userName);
                     break;
                 case 4:
                     cancelBookingSubMenu(userName);

@@ -27,7 +27,7 @@ public class GymCenterService implements GymCenterInterface{
     }
 
     public void requestGymCentreApproval(String gymCentreId){
-        gymCenterDAO.sendCentreApprovalRequest(gymCentreId);
+        gymCenterDAO.sendCenterApprovalRequest(gymCentreId);
     }
 
     public GymCenter getGymCentreById(String centreID) {

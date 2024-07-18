@@ -106,7 +106,7 @@ public class FlipFitAdminMenu {
             System.out.println("----");
             System.out.println("");
             for(GymCenter gymCenter: pendingGymCentres) {
-                System.out.printf("%-8s\t", gymCenter.getGymCentreID());
+                System.out.printf("%-8s\t", gymCenter.getGymCenterId());
                 System.out.printf("%-8s\t", gymCenter.getGymCenterName());
                 System.out.printf("%-8s\t", gymCenter.getCity());
                 System.out.printf("%-8s\t", gymCenter.getOwnerID());

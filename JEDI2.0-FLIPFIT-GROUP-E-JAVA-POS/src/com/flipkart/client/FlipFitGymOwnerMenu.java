@@ -93,7 +93,7 @@ public class FlipFitGymOwnerMenu {
                     System.out.println("Enter Gym Centre capacity: ");
                     int capacity = scanner.nextInt();
 
-                    System.out.println("Enter price: : ");
+                    System.out.println("Enter price: ");
                     int price = scanner.nextInt();
 
                     gymCentreService.addCenter(
@@ -121,7 +121,7 @@ public class FlipFitGymOwnerMenu {
                 case 4:
 
                     boolean isAdding = true;
-                    String centreId = null;
+                    String centerId = null;
 
                     List<Slot> newSlotList = new ArrayList<>();
                     while (isAdding) {
@@ -129,7 +129,7 @@ public class FlipFitGymOwnerMenu {
                         String slotId = scanner.next();
 
                         System.out.println("Enter Gym Centre Id: ");
-                        centreId = scanner.next();
+                        centerId = scanner.next();
 
                         System.out.println("Enter time in 24h format (hh:mm:ss) : ");
                         String time = scanner.next();
@@ -139,7 +139,7 @@ public class FlipFitGymOwnerMenu {
 
                         newSlotList.add(new Slot(
                                 slotId,
-                                centreId,
+                                centerId,
                                 localTime
                         ));
 
@@ -152,7 +152,7 @@ public class FlipFitGymOwnerMenu {
                         }
                     }
 
-                    slotService.addSlotsForGym(centreId, newSlotList);
+                    slotService.addSlotsForGym(centerId, newSlotList);
                     break;
                 case 5:
                     System.out.println("Going back to Previous menu");

@@ -6,7 +6,7 @@ import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.utils.UserPlan;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface CustomerInterface {

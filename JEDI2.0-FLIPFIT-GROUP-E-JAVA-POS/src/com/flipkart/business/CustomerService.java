@@ -24,30 +24,13 @@ public class CustomerService implements CustomerInterface {
     }
 
     @Override
-    public List<Slot> getAvailableSlots(String centreID, java.sql.Date date) {
-        return List.of();
+    public List<Slot> getAvailableSlots(String centreID, Date date) {
+        return gymCentreService.getAvailableSlotsByCentreAndDate(centreID,date);
     }
 
     public List<Booking> getCustomerBookings(String customerId){
         //takes userId and returns List<Bookings>
         return bookingService.getBookingByCustomerId(customerId);
-    }
-
-    @Override
-    public boolean bookSlot(String userID, java.sql.Date date, String slotId, String centreId) {
-        if(!slotService.isSlotValid(slotId,centreId)){
-            System.out.println("INVALID_SLOT");
-            return false;
-        }
-        String scheduleId = scheduleService.getOrCreateSchedule(slotId,date).getScheduleID();
-        //create booking
-        boolean isOverlap = bookingService.checkBookingOverlap(userID,date,slotId);
-        if(isOverlap) {
-            System.out.println("There exists a conflicting booking, First cancel it!!!!");
-            return false;
-        }
-        bookingService.addBooking(userID, scheduleId);
-        return true;
     }
 
     @Override
@@ -59,7 +42,7 @@ public class CustomerService implements CustomerInterface {
         return bookingService.getCustomerPlan(customerId);
     }
 
-    public boolean bookSlot(String userName,Date date, String slotId,String centreId){
+    public boolean bookSlot(String userName, Date date, String slotId,String centreId){
         if(!slotService.isSlotValid(slotId,centreId)){
             System.out.println("INVALID SLOT");
             return false;

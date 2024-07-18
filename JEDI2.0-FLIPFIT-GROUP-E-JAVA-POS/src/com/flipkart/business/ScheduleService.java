@@ -1,6 +1,5 @@
 package com.flipkart.business;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,7 +26,7 @@ public class ScheduleService implements ScheduleInterface {
     }
 
     public Schedule getScheduleByDateAndSlotId(String SlotId, Date date){
-        List<Schedule> scheduleList = scheduleDAO.getAllScheduleByDate((java.sql.Date) date);
+        List<Schedule> scheduleList = scheduleDAO.getAllScheduleByDate(date);
         for(Schedule schedule: scheduleList){
             if(schedule.getSlotId().equals(SlotId))
                 return schedule;
@@ -57,7 +56,7 @@ public class ScheduleService implements ScheduleInterface {
         List<Slot> allSlotsOfThatCentre = slotService.getAllSlotsByCentre(centreID);
         List<Slot> response = slotService.getAllSlotsByCentre(centreID);
         for(Slot slot: allSlotsOfThatCentre){
-            for(Schedule schedule: scheduleDAO.getAllScheduleByDate((java.sql.Date) date)){
+            for(Schedule schedule: scheduleDAO.getAllScheduleByDate(date)){
                 if (slotService.getSlotByID(schedule.getSlotId()).getCenterID().equals(centreID)){
                     if(schedule.getAvailability() <= 0){
                         response.remove(slot);

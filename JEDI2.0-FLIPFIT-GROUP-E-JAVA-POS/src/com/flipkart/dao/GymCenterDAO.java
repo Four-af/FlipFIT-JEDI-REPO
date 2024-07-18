@@ -23,7 +23,7 @@ public class GymCenterDAO {
     }
 
     public void addGymCentre(GymCenter centre) {
-        gymCentres.put(centre.getGymCentreID(), centre);
+        gymCentres.put(centre.getGymCenterId(), centre);
         ownerGyms.computeIfAbsent(centre.getOwnerID(), k -> new ArrayList<>()).add(centre);
     }
 
@@ -44,10 +44,11 @@ public class GymCenterDAO {
         }
     }
 
-    public void sendCentreApprovalRequest(String gymCentreId) {
+    public void sendCenterApprovalRequest(String gymCentreId) {
         GymCenter centre = gymCentres.get(gymCentreId);
         if (centre != null) {
-            centre.setApproved(true); // Assuming 2 indicates approval requested
+            centre.setApproved(true);
+            System.out.println("Gym Center Approved!");
         }
     }
 

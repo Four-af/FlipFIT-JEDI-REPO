@@ -4,6 +4,7 @@ import com.flipkart.bean.Customer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class CustomerDAO  {
     private Map<String, Customer> customers = new HashMap<>();
@@ -13,7 +14,7 @@ public class CustomerDAO  {
         if (customers.containsKey(userName)) {
             System.out.println("User already exists.");
         }
-        Customer customer = new Customer("123", userName, password, email, phoneNumber, cardNumber);
+        Customer customer = new Customer(UUID.randomUUID().toString(), userName, password, email, phoneNumber, cardNumber);
         customers.put(userName, customer);
     }
 

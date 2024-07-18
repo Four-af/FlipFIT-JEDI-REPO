@@ -4,7 +4,7 @@ package com.flipkart.bean;
  * Represents a gym in the FlipFit system.
  */
 public class GymCenter {
-    private String gymCentreID;
+    private String gymCenterId;
     private String ownerID;
     private String gymCenterName;
     protected String gstin;
@@ -13,8 +13,8 @@ public class GymCenter {
     private int price;
     private Boolean isApproved;
 
-    public GymCenter(String gymCentreID, String ownerID, String gymCenterName, String gstin, String city, int capacity, int price, Boolean isApproved) {
-        this.gymCentreID = gymCentreID;
+    public GymCenter(String gymCenterId, String ownerID, String gymCenterName, String gstin, String city, int capacity, int price, Boolean isApproved) {
+        this.gymCenterId = gymCenterId;
         this.ownerID = ownerID;
         this.gymCenterName = gymCenterName;
         this.gstin = gstin;
@@ -40,12 +40,12 @@ public class GymCenter {
         this.price = price;
     }
 
-    public String getGymCentreID() {
-        return gymCentreID;
+    public String getGymCenterId() {
+        return gymCenterId;
     }
 
-    public void setGymCentreID(String gymCentreID) {
-        this.gymCentreID = gymCentreID;
+    public void setGymCenterId(String gymCenterId) {
+        this.gymCenterId = gymCenterId;
     }
 
     public String getCity() {
