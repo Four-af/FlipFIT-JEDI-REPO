@@ -20,4 +20,6 @@ public interface CustomerInterface {
     boolean isUserValid(String userName, String password);
 
     List<UserPlan> getCustomerPlan(String userName);
+
+    void cancelBookingbyID(String bookingId);
 }

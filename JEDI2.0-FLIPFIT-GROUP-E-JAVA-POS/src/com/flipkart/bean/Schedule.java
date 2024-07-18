@@ -5,26 +5,26 @@ import java.util.UUID;
 
 
 public class Schedule {
-    private String ScheduleID;
-    private String SlotId;
-    private int Availability;
+    private String scheduleID;
+    private String slotId;
+    private int availability;
     private LocalDate date;
 
 
-    public Schedule(LocalDate date, String SlotId, int Availability) {
-        this.ScheduleID=UUID.randomUUID().toString();
+    public Schedule(LocalDate date, String slotId, int availability) {
+        this.scheduleID =UUID.randomUUID().toString();
         this.date = date;
-        this.SlotId = SlotId;
-        this.Availability=Availability;
+        this.slotId = slotId;
+        this.availability = availability;
     }
 
 
     public void setScheduleID(String ScheduleID) {
-        this.ScheduleID = ScheduleID;
+        this.scheduleID = ScheduleID;
     }
 
     public String getScheduleID() {
-        return ScheduleID;
+        return scheduleID;
     }
 
     public void setDate(LocalDate date) {
@@ -37,20 +37,20 @@ public class Schedule {
 
 
     public void setSlotId(String SlotId) {
-        this.SlotId = SlotId;
+        this.slotId = SlotId;
     }
 
     public String getSlotId() {
-        return SlotId;
+        return slotId;
     }
 
 
 
     public int getAvailability() {
-        return Availability;
+        return availability;
     }
 
     public void setAvailability(int Availability) {
-        this.Availability=Availability;
+        this.availability =Availability;
     }
 }

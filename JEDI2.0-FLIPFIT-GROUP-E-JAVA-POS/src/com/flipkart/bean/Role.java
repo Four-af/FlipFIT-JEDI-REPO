@@ -2,6 +2,6 @@ package com.flipkart.bean;
 
 public enum Role {
     ADMIN,
-    GYMOWNER,
+    GYM_OWNER,
     CUSTOMER
 }

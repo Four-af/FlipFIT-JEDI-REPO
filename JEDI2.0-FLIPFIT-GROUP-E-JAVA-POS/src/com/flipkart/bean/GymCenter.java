@@ -13,19 +13,6 @@ public class GymCenter {
     private int price;
     private int isApproved;
 
-
-    //BAD VOCABULARY
-    public GymCenter(String gymCentreID, String ownerID, String gymCenterName, String gstin, String city, int capacity, int price) {
-        this.gymCentreID = gymCentreID;
-        this.ownerID = ownerID;
-        this.gymCenterName = gymCenterName;
-        this.gstin = gstin;
-        this.city = city;
-        this.capacity = capacity;
-        this.price = price;
-        this.isApproved = 0;
-    }
-
     public String getGstin() {
         return gstin;
     }

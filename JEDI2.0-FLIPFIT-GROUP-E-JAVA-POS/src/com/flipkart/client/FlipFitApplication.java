@@ -4,11 +4,11 @@ import com.flipkart.bean.Admin;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymOwner;
 
+import java.text.ParseException;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class FlipFitApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner in = new Scanner(System.in);
         int choice = 0;
         System.out.println("Welcome To FlipFit: ");
@@ -41,7 +41,7 @@ public class FlipFitApplication {
                         admin.setEmailId(emailId);
                         admin.setPassword(password);
 
-                        FlipFitAdminMenu.getFlipFitAdminMenu();
+                        FlipFitAdminMenu.AdminMenu();
 
                         break;
                     }
@@ -51,7 +51,7 @@ public class FlipFitApplication {
                         customer.setEmailId(emailId);
                         customer.setPassword(password);
 
-                        FlipFitCustomerMenu.getFlipFitCustomerMenu();
+                        FlipFitCustomerMenu.getCustomerMenu();
 
                         break;
                     }
@@ -94,7 +94,7 @@ public class FlipFitApplication {
                 System.out.println("Address: " + address);
                 System.out.println("Email Id: " + emailId);
 
-                FlipFitCustomerMenu.getFlipFitCustomerMenu();
+                FlipFitCustomerMenu.getCustomerMenu();
 
                 break;
             }
