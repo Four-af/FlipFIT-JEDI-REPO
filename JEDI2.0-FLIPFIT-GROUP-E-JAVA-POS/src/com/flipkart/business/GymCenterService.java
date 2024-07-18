@@ -29,7 +29,7 @@ public class GymCenterService implements GymCenterInterface{
     }
 
     public GymCenter getGymCentreById(String centreID) {
-        GymCenter gymCenter = new GymCenter();
+        GymCenter gymCenter = new GymCenter(" "," "," "," "," ",0,0);
         return gymCenter;
     }
 }
