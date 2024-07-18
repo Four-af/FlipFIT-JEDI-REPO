@@ -1,171 +1,96 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.Admin;
-import com.flipkart.bean.Customer;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Role;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class FlipFitApplication {
-    public static void main(String[] args) throws ParseException {
-        Scanner in = new Scanner(System.in);
-        int choice = 0;
-        System.out.println("Welcome To FlipFit: ");
-        System.out.println("Type " +
-                "\n 1-> Login, " +
-                "\n 2-> Registration of Customer " +
-                "\n 3-> Registration of Gym Owner " +
-                "\n 4-> Change Password " +
-                "\n 5-> Exit \n"
-        );
-        choice = in.nextInt();
+    public static int userId = 0;
+    public static Scanner scanner = new Scanner(System.in);
+    private static FlipFitAdminMenu adminClient = new FlipFitAdminMenu();
+    private static FlipFitCustomerMenu customerClient = new FlipFitCustomerMenu();
+    private static FlipFitGymOwnerMenu gymOwnerClient = new FlipFitGymOwnerMenu();
 
+
+    private static void mainPage(){
+        System.out.println("1. Login\n2. Registration\n3. Exit");
+        int choice = scanner.nextInt();
         switch (choice) {
-            case 1: {
-                System.out.println("Enter your Login Credentials");
-
-                System.out.println("Enter your emailId:> ");
-                String emailId = in.next();
-
-                System.out.println("Enter your password:> ");
-                String password = in.next();
-
-                System.out.println("Enter your role:> Customer/Admin/GymOwner ");
-                String role = in.next();
-
-                switch (role) {
-                    case "ADMIN": {
-                        Admin admin = new Admin();
-
-                        admin.setEmailId(emailId);
-                        admin.setPassword(password);
-
-                        FlipFitAdminMenu.AdminMenu();
-
-                        break;
-                    }
-                    case "CUSTOMER": {
-                        Customer customer = new Customer();
-
-                        customer.setEmailId(emailId);
-                        customer.setPassword(password);
-
-                        FlipFitCustomerMenu.getCustomerMenu();
-
-                        break;
-                    }
-                    case "GYM OWNER": {
-                        GymOwner gymOwner = new GymOwner();
-
-                        gymOwner.setEmailId(emailId);
-                        gymOwner.setPassword(password);
-
-                        FlipFitGymOwnerMenu.getGymOwnerMenu();
-
-                        break;
-                    }
-                }
+            case 1:
+                login();
                 break;
-
-            }
-            case 2: {
-                System.out.println("Enter your Credentials");
-
-                System.out.println("Enter your emailId:> ");
-                String emailId = in.next();
-
-                System.out.println("Enter your password:> ");
-                String password = in.next();
-
-                System.out.println("Enter your Name:> ");
-                String name = in.next();
-
-                System.out.println("Enter your Address:> ");
-                String address = in.next();
-
-                Customer customer = new Customer();
-
-                customer.setEmailId(emailId);
-                customer.setPassword(password);
-
-                System.out.println("<<Customer Details>>");
-                System.out.println("Name: " + name);
-                System.out.println("Address: " + address);
-                System.out.println("Email Id: " + emailId);
-
-                FlipFitCustomerMenu.getCustomerMenu();
-
+            case 2:
+                registration();
                 break;
-            }
-            case 3: {
-                System.out.println("Enter your Credentials");
-
-                System.out.println("Enter your emailId:> ");
-                String emailId = in.next();
-
-                System.out.println("Enter your password:> ");
-                String password = in.next();
-
-                System.out.println("Enter your Name:> ");
-                String name = in.next();
-
-                System.out.println("Enter your Address:> ");
-                String address = in.next();
-
-                System.out.println("Enter your Phone No.:> ");
-                String phone = in.next();
-
-                GymOwner gymOwner = new GymOwner();
-
-                gymOwner.setEmailId(emailId);
-                gymOwner.setPassword(password);
-
-                System.out.println("<<Customer Details>>");
-                System.out.println("Name: " + name);
-                System.out.println("Address: " + address);
-                System.out.println("Phone No: " + phone);
-                System.out.println("Email Id: " + emailId);
-
-                FlipFitGymOwnerMenu.getGymOwnerMenu();
-
+            case 3:
+                System.out.println("EXIT_MESSAGE");
+                return;
+            default:
+                System.out.println("INVALID_CHOICE_ERROR");
                 break;
+        }
+        mainPage();
+    }
+
+    private static void login(){
+        try {
+            System.out.println("Enter your Role");
+            Role role = Role.valueOf(scanner.next().toUpperCase());
+
+            System.out.println("Enter your UserName");
+            String userName = scanner.next();
+
+            System.out.println("Enter your Passkey");
+            String password = scanner.next();
+
+            switch (role){
+                case ADMIN:
+                    adminClient.adminLogin(userName,password);
+                    break;
+                case GYM_OWNER:
+                    gymOwnerClient.gymOwnerLogin(userName,password);
+                    break;
+                case CUSTOMER:
+                    customerClient.customerLogin(userName,password);
+                    break;
+                default:
+                    System.out.println("INVALID_CHOICE_ERROR");
+                    break;
             }
-            case 4: {
-                System.out.println("Enter your role");
-                String role = in.next();
-
-                System.out.println("Enter your emailId");
-                String emailId = in.next();
-
-                System.out.println("Enter your old Password");
-                String oldPassword = in.next();
-
-                System.out.println("Enter your new Password");
-                String newPassword = in.next();
-
-                switch (role) {
-                    case "ADMIN": {
-                        Admin admin = new Admin();
-                        admin.setPassword(newPassword);
-                        break;
-                    }
-                    case "CUSTOMER": {
-                        Customer customer = new Customer();
-                        customer.setPassword(newPassword);
-                        break;
-                    }
-                    case "GYM OWNER": {
-                        GymOwner gymOwner = new GymOwner();
-                        gymOwner.setPassword(newPassword);
-                        break;
-                    }
-                }
-                break;
-            }
-            case 5: {
-                System.exit(0);
-            }
+        }catch (IllegalArgumentException | ParseException e){
+            System.out.println("INVALID_CHOICE_ERROR");
         }
     }
+
+    private static void registration(){
+        try {
+            System.out.println("Enter your role");
+            Role role = Role.valueOf(scanner.next().toUpperCase());
+
+            switch (role){
+                case ADMIN:
+                    System.out.println("Admin is already registered");
+                    mainPage();
+                    break;
+                case CUSTOMER:
+                    customerClient.register();
+                    break;
+                case GYM_OWNER:
+                    gymOwnerClient.register();
+                    break;
+                default:
+                    System.out.println("INVALID_CHOICE_ERROR");
+                    break;
+            }
+        }catch (IllegalArgumentException | ParseException e){
+            System.out.println("INVALID_CHOICE_ERROR");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("WELCOME_MESSAGE");
+        mainPage();
+    }
+
 }

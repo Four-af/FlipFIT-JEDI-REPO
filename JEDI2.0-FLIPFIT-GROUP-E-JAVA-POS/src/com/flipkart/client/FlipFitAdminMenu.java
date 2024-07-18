@@ -108,8 +108,8 @@ public class FlipFitAdminMenu {
                 System.out.printf("%-8s\t", gymCenter.getCity());
                 System.out.printf("%-8s\t", gymCenter.getOwnerID());
                 System.out.printf("%-8s\t", gymCenter.getCapacity());
-                if(gymCenter.isApproved() == 0) System.out.println("No\n");
-                else if(gymCenter.isApproved() == 1) System.out.println("Yes\n");
+                if(!gymCenter.isApproved()) System.out.println("No\n");
+                else if(gymCenter.isApproved()) System.out.println("Yes\n");
                 else System.out.println("Pending\n");
             }
             System.out.println("----");
