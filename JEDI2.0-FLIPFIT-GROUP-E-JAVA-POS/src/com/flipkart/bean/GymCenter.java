@@ -13,6 +13,10 @@ public class GymCenter {
     private int price;
     private Boolean isApproved;
 
+    public GymCenter() {
+
+    }
+
     public GymCenter(String gymCenterId, String ownerID, String gymCenterName, String gstin, String city, int capacity, int price, Boolean isApproved) {
         this.gymCenterId = gymCenterId;
         this.ownerID = ownerID;

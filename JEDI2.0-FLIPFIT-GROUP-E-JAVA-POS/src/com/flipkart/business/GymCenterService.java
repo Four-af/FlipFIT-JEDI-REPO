@@ -10,7 +10,7 @@ public class GymCenterService implements GymCenterInterface{
     private static ScheduleInterface scheduleService = new ScheduleService();
 
     public List<GymCenter> getAllCentresByOwmerId(String gymOwnerId) {
-        return gymCenterDAO.getAllCentresByOwnerId(gymOwnerId);
+        return gymCenterDAO.getAllCentresByOwmerId(gymOwnerId);
     }
 
     public List<GymCenter> getCentresByCity(String city){
@@ -27,7 +27,7 @@ public class GymCenterService implements GymCenterInterface{
     }
 
     public void requestGymCentreApproval(String gymCentreId){
-        gymCenterDAO.sendCenterApprovalRequest(gymCentreId);
+        gymCenterDAO.sendCentreApprovalRequest(gymCentreId);
     }
 
     public GymCenter getGymCentreById(String centreID) {
