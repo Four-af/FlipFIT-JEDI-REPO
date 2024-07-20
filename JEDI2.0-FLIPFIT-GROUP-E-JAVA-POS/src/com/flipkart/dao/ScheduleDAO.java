@@ -54,8 +54,12 @@ public class ScheduleDAO implements ScheduleInterfaceDAO {
         return schedule;
     }
 
-
     public List<Schedule> getAllScheduleByDate(java.sql.Date date) {
+        return List.of();
+    }
+
+
+    public List<Schedule> getAllScheduleByDate(Date date) {
         ArrayList<Schedule> response = new ArrayList<>();
         try{
             Connection conn = DatabaseConnector.connect();
