@@ -3,7 +3,6 @@ package com.flipkart.client;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.*;
-import com.flipkart.utils.Util;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.flipkart.client.FlipFitApplication.scanner;
+import static com.flipkart.utils.Util.*;
 
 public class FlipFitGymOwnerMenu {
 
@@ -69,7 +69,7 @@ public class FlipFitGymOwnerMenu {
 
                 case 0:
                     List<GymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
-                    Util.printGymCentres(allGymCentres);
+                    printGymCentres(allGymCentres);
                     break;
 
                 case 1:

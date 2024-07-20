@@ -1,7 +1,13 @@
 package com.flipkart.utils;
 
+import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Slot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Util {
@@ -28,5 +34,63 @@ public class Util {
             System.out.printf("%-8s\t\n", gymCenter.isApproved());
         }
         System.out.println("-----");
+    }
+
+    public static void printOwnerList(List<GymOwner> gymOwnerList){
+        System.out.println("-----");
+        System.out.printf("%-8s\t", "ID");
+        System.out.printf("%-8s\t", "NAME");
+        System.out.printf("%-8s\t", "EMAIL-ID");
+        System.out.printf("%11s\t", "PAN");
+        System.out.printf("%23s\t\n", "IS-APPROVED");
+        System.out.println("-----");
+        System.out.println("");
+        for(GymOwner gymOwner: gymOwnerList) {
+            System.out.printf("%-8s\t", gymOwner.getUserID());
+            System.out.printf("%-8s\t", gymOwner.getUserName());
+            System.out.printf("%-8s\t", gymOwner.getEmail());
+            System.out.printf("%-8s\t", gymOwner.getPanNumber());
+            if(gymOwner.isApproved())
+            {
+                System.out.println("Yes\n");
+            }
+            else if(!gymOwner.isApproved())
+            {
+                System.out.println("No\n");
+            } else {
+                System.out.println("Pending\n");
+            }
+        }
+        System.out.println("----");
+    }
+
+    public static void printCustomerProfile(Customer customer){
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("USER ID: " + customer.getUserID());
+        System.out.println("USER NAME: " + customer.getUserName());
+        System.out.println("EMAIL: " + customer.getEmail());
+        System.out.println("CONTACT: " + customer.getCustomerPhone());
+        System.out.println("CARD DETAILS: " + customer.getCardDetails());
+        System.out.println("------------------------------------------------------------------------");
+    }
+
+    public static void printSlots(List<Slot> slots){
+        System.out.println("-----");
+        System.out.printf("%-8s\t", "SLOT-ID");
+        System.out.printf("%-8s\t\n", "SLOT-TIME");
+        System.out.println("----");
+        for(Slot slot: slots) {
+            System.out.printf("%-8s\t", slot.getSlotId());
+            System.out.printf("%-8s\t\n", slot.getTime());
+        }
+        System.out.println("----");
+    }
+
+    public static Date selectDate() throws ParseException {
+        //Select Date
+//        System.out.print("Enter Date (dd/MM/yyyy): ");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        return date;
     }
 }

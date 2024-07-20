@@ -14,7 +14,7 @@ public class FlipFitApplication {
 
 
     private static void mainPage(){
-        System.out.println("1. Login\n2. Registration\n3. Exit");
+        System.out.println("1. Login\n2. Registration\n3. Change Password\n4. Exit");
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
@@ -23,7 +23,7 @@ public class FlipFitApplication {
             case 2:
                 registration();
                 break;
-            case 3:
+            case 4:
                 System.out.println("Thanks for visiting!");
                 return;
             default:
