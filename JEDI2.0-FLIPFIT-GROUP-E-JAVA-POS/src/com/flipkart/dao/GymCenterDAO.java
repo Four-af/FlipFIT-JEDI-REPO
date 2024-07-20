@@ -17,12 +17,12 @@ import java.sql.SQLException;
 
 import static com.flipkart.constants.SQLConstants.*;
 
-public class GymCenterDAO {
+public class GymCenterDAO implements GymCentreInterfaceDAO {
 
     private Connection conn = null;
     private PreparedStatement statement = null;
 
-    public GymCenterDAO() {
+    public GymCenterDAO()  {
     }
 
     public List<GymCenter> viewAllGymCenters() {
@@ -50,6 +50,11 @@ public class GymCenterDAO {
             throw new RuntimeException(e);
         }
         return allGymCentres;
+    }
+
+    @Override
+    public List<GymCenter> getAllCentresByOwnerId(String gymOwnerId) {
+        return List.of();
     }
 
     // api call to retrieve all gym centres and status
@@ -83,7 +88,6 @@ public class GymCenterDAO {
 
         return allGymCentres;
     }
-
 
 
     public GymCenter getGymCentreByCentreId(String gymCentreId){
