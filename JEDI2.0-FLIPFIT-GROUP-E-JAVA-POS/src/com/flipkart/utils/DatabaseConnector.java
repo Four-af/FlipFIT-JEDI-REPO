@@ -20,7 +20,7 @@ public class DatabaseConnector {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 //                    String url = "jdbc:mysql://localhost:3306/Flipfit";//flipfit is the name of database 3306 is the port no. of mysql
-                FileInputStream inputStream = new FileInputStream("/Users/aiman.fatima/Projects/FlipFIT-JEDI-REPO/JEDI2.0-FLIPFIT-GROUP-E-JAVA-POS/src/com/flipkart/config.properties");
+                FileInputStream inputStream = new FileInputStream("/Users/shubham.kumar13/Desktop/FlipFIT-JEDI-REPO/JEDI2.0-FLIPFIT-GROUP-E-JAVA-POS/src/com/flipkart/config.properties");
                 Properties newProp = new Properties();
                 newProp.load(inputStream);
                 Connection connection = DriverManager.getConnection(newProp.getProperty("url"), newProp.getProperty("user"), newProp.getProperty("password"));

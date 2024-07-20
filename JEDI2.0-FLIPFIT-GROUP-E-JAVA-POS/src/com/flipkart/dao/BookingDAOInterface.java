@@ -4,12 +4,10 @@ import com.flipkart.bean.Booking;
 import com.flipkart.utils.UserPlan;
 
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
 
-public interface BookingInterfaceDAO {
+public interface BookingDAOInterface {
     void  addBooking(String userName, String scheduleID);
     List<Booking> getBookingByCustomerId(String customerId);
     void cancelBookingById(String bookingID);

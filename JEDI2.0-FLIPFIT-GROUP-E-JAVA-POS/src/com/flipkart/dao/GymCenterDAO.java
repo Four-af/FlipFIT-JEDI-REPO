@@ -4,11 +4,8 @@ import com.flipkart.bean.GymCenter;
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.utils.DatabaseConnector;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +14,7 @@ import java.sql.SQLException;
 
 import static com.flipkart.constants.SQLConstants.*;
 
-public class GymCenterDAO implements GymCentreInterfaceDAO {
+public class GymCenterDAO implements GymCentreDAOInterface {
 
     private Connection conn = null;
     private PreparedStatement statement = null;

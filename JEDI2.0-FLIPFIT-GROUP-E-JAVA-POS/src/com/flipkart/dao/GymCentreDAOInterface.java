@@ -3,13 +3,8 @@ package com.flipkart.dao;
 import com.flipkart.bean.GymCenter;
 
 import java.util.List;
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-public interface GymCentreInterfaceDAO {
+public interface GymCentreDAOInterface {
 
     List<GymCenter> viewAllGymCenters();
     List<GymCenter> getAllCentresByOwnerId(String gymOwnerId);

@@ -12,11 +12,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ScheduleDAO implements ScheduleInterfaceDAO {
+public class ScheduleDAO implements ScheduleDAOInterface {
 
     public void addSchedule( Schedule schedule){
         try{

@@ -11,12 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.time.LocalTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
-public class SlotDAO implements SlotInterfaceDAO {
+public class SlotDAO implements SlotDAOInterface {
 
     public SlotDAO(){
     }

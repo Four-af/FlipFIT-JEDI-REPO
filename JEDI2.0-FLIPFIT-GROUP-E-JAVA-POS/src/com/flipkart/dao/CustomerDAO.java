@@ -1,7 +1,6 @@
 package com.flipkart.dao;
 
 import com.flipkart.bean.Customer;
-import com.flipkart.business.CustomerInterface;
 import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.exceptions.UserInvalidException;
 import com.flipkart.utils.DatabaseConnector;
@@ -10,13 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import static com.flipkart.constants.SQLConstants.*;
 
-public class CustomerDAO implements CustomerInterfaceDAO {
+public class CustomerDAO implements CustomereDAOInterface {
 
     public void registerCustomer(String userName, String password, String email, String phoneNumber, String cardNumber) throws RegistrationFailedException {
         try {

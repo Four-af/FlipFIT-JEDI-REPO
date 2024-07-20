@@ -4,7 +4,7 @@ import com.flipkart.bean.GymOwner;
 
 import java.util.List;
 
-public interface GymOwnerInterfaceDAO {
+public interface GymOwnerDAOInterface {
 
     public List<GymOwner> getGymOwnerList();
     public void setGymOwnerList(List<GymOwner> gymOwnerList);
