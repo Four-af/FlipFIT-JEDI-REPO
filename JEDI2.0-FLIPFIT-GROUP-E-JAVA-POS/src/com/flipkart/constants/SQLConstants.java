@@ -2,6 +2,8 @@ package com.flipkart.constants;
 
 public class SQLConstants {
 
+    //-------------------CHANGE PASSWORD---------------------
+
     // ------------------------ GYM OWNER ------------------------
     public static final String FETCH_ALL_GYM_OWNERS_QUERY = "SELECT * FROM FlipFit.GymOwner";
     public static final String FETCH_ALL_PENDING_GYM_OWNERS_QUERY = "SELECT * FROM FlipFit.GymOwner where isApproved = 0";
