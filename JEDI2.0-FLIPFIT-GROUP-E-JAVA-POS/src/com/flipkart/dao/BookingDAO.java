@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-public class BookingDAO {
+public class BookingDAO implements BookingInterfaceDAO {
 
     private List<Booking> bookingList = new ArrayList<>();
     private ScheduleDAO scheduleDAO = new ScheduleDAO();
