@@ -3,10 +3,8 @@ package com.flipkart.client;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.GymOwner;
-import com.flipkart.business.AdminInterface;
-import com.flipkart.business.AdminService;
-import com.flipkart.business.GymOwnerInterface;
-import com.flipkart.business.GymOwnerService;
+import com.flipkart.business.*;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,6 +16,7 @@ public class FlipFitAdminMenu {
     private static Admin admin = new Admin();
     private static AdminInterface adminService = new AdminService();
     private static GymOwnerInterface gymOwnerService = new GymOwnerService();
+    private static GymCenterInterface gymCenterService = new GymCenterService();
     public static Scanner scanner = new Scanner(System.in);
 
 
@@ -128,7 +127,7 @@ public class FlipFitAdminMenu {
         String formattedDate = currentTime.format(myFormat);
         System.out.println("WELCOME ADMIN!!\nLogin Time: "+currentTime);
         while(true){
-            System.out.println("0. View All Gym Owners\n1. View Pending GymOwner Approval Requests\n2. View Pending GymCenter's Approval Requests\n3. Go Back To Previous Menu");
+            System.out.println("0. View All Gym Owners\n1. View All Gym Centres\n2. View Pending GymOwner Approval Requests\n3. View Pending GymCenter's Approval Requests\n4. Go Back To Previous Menu");
             int pendingChoice = scanner.nextInt();
             switch (pendingChoice) {
                 case 0:
@@ -136,17 +135,21 @@ public class FlipFitAdminMenu {
                     printOwnerList(allGymOwners);
                     break;
                 case 1:
+                    List<GymCenter> allGymCenters = gymCenterService.viewAllGymCenters();
+                    printGymCentres(allGymCenters);
+                    break;
+                case 2:
                     List<GymOwner> pendingGymOwners = adminService.viewPendingGymOwners();
                     printOwnerList(pendingGymOwners);
                     if(!pendingGymOwners.isEmpty()) handleGymOwnerApprovalRequests();
                     break;
 
-                case 2:
+                case 3:
                     List<GymCenter> pendingGymCentres = adminService.viewPendingGymCentres();//get listGymCenterIds
                     printGymCentres(pendingGymCentres);
                     if(!pendingGymCentres.isEmpty()) handleGymCenterApprovalRequests();
                     break;
-                case 3:
+                case 4:
                     return;
             }
         }

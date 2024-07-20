@@ -25,13 +25,40 @@ public class GymCenterDAO {
     public GymCenterDAO() {
     }
 
+    public List<GymCenter> viewAllGymCenters() {
+        List<GymCenter> allGymCentres = new ArrayList<>();
+        try {
+            conn = DatabaseConnector.connect();
+            statement = conn.prepareStatement(FETCH_ALL_GYM_CENTRES);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                GymCenter gymCentre = new GymCenter(
+                        rs.getString("centreId"),
+                        rs.getString("ownerId"),
+                        rs.getString("centreName"),
+                        rs.getString("gstin"),
+                        rs.getString("city"),
+                        rs.getInt("capacity"),
+                        rs.getInt("price"),
+                        rs.getBoolean("isApproved")
+                );
+                gymCentre.setApproved(rs.getBoolean("isApproved"));
+                allGymCentres.add(gymCentre);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return allGymCentres;
+    }
+
     // api call to retrieve all gym centres and status
     public List<GymCenter> getAllCentresByOwmerId(String gymOwnerId)  {
 
         List<GymCenter> allGymCentres = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
-            statement = conn.prepareStatement(SQLConstants.FETCH_GYM_CENTRES_BY_OWNER_ID);
+            statement = conn.prepareStatement(FETCH_GYM_CENTRES_BY_OWNER_ID);
             statement.setString(1, gymOwnerId);
 
             ResultSet rs = statement.executeQuery();
