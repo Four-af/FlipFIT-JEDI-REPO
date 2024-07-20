@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ScheduleDAO {
+public class ScheduleDAO implements ScheduleInterfaceDAO {
 
     public void addSchedule( Schedule schedule){
         try{
@@ -54,7 +54,8 @@ public class ScheduleDAO {
         return schedule;
     }
 
-    public List<Schedule> getAllScheduleByDate(Date date) {
+
+    public List<Schedule> getAllScheduleByDate(java.sql.Date date) {
         ArrayList<Schedule> response = new ArrayList<>();
         try{
             Connection conn = DatabaseConnector.connect();
