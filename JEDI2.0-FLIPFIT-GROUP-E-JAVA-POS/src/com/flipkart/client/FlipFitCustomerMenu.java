@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
-
+import static com.flipkart.utils.Util.*;
 
 public class FlipFitCustomerMenu {
     private CustomerInterface customerService  =  new CustomerService();
@@ -55,18 +55,6 @@ public class FlipFitCustomerMenu {
         customerClientMainPage(userName);
     }
 
-    private void printSlots(List<Slot> slots){
-        System.out.println("-----");
-        System.out.printf("%-8s\t", "SLOT-ID");
-        System.out.printf("%-8s\t\n", "SLOT-TIME");
-        System.out.println("----");
-        for(Slot slot: slots) {
-            System.out.printf("%-8s\t", slot.getSlotId());
-            System.out.printf("%-8s\t\n", slot.getTime());
-        }
-        System.out.println("----");
-    }
-
     private void bookSlotSubMenu(String userName) throws ParseException {
         System.out.println("Provide Location to search :");
         String location = scanner.next();
@@ -83,14 +71,6 @@ public class FlipFitCustomerMenu {
         chooseSlot(chosenGym,userName,date,chosenGym);
     }
 
-    private Date selectDate() throws ParseException {
-        //Select Date
-//        System.out.print("Enter Date (dd/MM/yyyy): ");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-        return date;
-    }
-
     private void chooseSlot(String gymCentreId,String userName,Date sqlDate,String centreId) throws ParseException {
         System.out.println("Choose from the Below Slots");
         List<Slot> availableSlots = customerService.getAvailableSlots(gymCentreId,sqlDate);
@@ -103,27 +83,6 @@ public class FlipFitCustomerMenu {
         System.out.println("Enter SlotID");
         String slotID = scanner.next();
         if(!customerService.bookSlot(userName,sqlDate,slotID,centreId)) chooseSlot(gymCentreId, userName, sqlDate,centreId);
-    }
-
-    private void printUserPlan(String userName){
-        System.out.println("Bookings : ");
-        List<UserPlan> allUserPlan= customerService.getCustomerPlan(userName);
-        List<Booking> bookingList = customerService.getCustomerBookings(userName);
-        System.out.println("-----");
-        System.out.printf("%-8s\t", "Centre-ID");
-        System.out.printf("%-8s\t", "SLOT-ID");
-        System.out.printf("%-8s\t", "DATE");
-        System.out.printf("%8s\t", "SLOT-TIME");
-        System.out.printf("%-8s\t\n", "SCHEDULE_ID");
-        System.out.println("-----");
-        for(UserPlan userPlan: allUserPlan) {
-            System.out.printf("%-8s\t", userPlan.getCentreID());
-            System.out.printf("%-8s\t", userPlan.getSlotId());
-            System.out.printf("%-8s\t", userPlan.getDate());
-            System.out.printf("%-8s\t", userPlan.getTime());
-            System.out.printf("%-8s\t\n", userPlan.getScheduleID());
-        }
-        System.out.println("-----");
     }
 
     private void printbookingsSubMenu(String userName){
@@ -146,16 +105,6 @@ public class FlipFitCustomerMenu {
         String bookingId = scanner.next();
         customerService.cancelBookingbyID(bookingId);
 
-    }
-
-    public void printCustomerProfile(Customer customer){
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("USER ID: " + customer.getUserID());
-        System.out.println("USER NAME: " + customer.getUserName());
-        System.out.println("EMAIL: " + customer.getEmail());
-        System.out.println("CONTACT: " + customer.getCustomerPhone());
-        System.out.println("CARD DETAILS: " + customer.getCardDetails());
-        System.out.println("------------------------------------------------------------------------");
     }
 
     public static void getCustomerMenu() {

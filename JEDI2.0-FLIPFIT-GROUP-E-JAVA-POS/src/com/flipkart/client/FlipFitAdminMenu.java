@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.flipkart.utils.Util.*;
+
 
 public class FlipFitAdminMenu {
     private static Admin admin = new Admin();
@@ -66,66 +68,11 @@ public class FlipFitAdminMenu {
 //            adminClientMainPage();
     }
 
-    private void printOwnerList(List<GymOwner> gymOwnerList){
-        System.out.println("-----");
-        System.out.printf("%-8s\t", "ID");
-        System.out.printf("%-8s\t", "NAME");
-        System.out.printf("%-8s\t", "EMAIL-ID");
-        System.out.printf("%11s\t", "PAN");
-        System.out.printf("%23s\t\n", "IS-APPROVED");
-        System.out.println("-----");
-        System.out.println("");
-        for(GymOwner gymOwner: gymOwnerList) {
-            System.out.printf("%-8s\t", gymOwner.getUserID());
-            System.out.printf("%-8s\t", gymOwner.getUserName());
-            System.out.printf("%-8s\t", gymOwner.getEmail());
-            System.out.printf("%-8s\t", gymOwner.getPanNumber());
-            if(gymOwner.isApproved())
-            {
-                System.out.println("Yes\n");
-            }
-            else if(!gymOwner.isApproved())
-            {
-                System.out.println("No\n");
-            } else {
-                System.out.println("Pending\n");
-            }
-        }
-        System.out.println("----");
-    }
-
-    private void printGymCentres(List<GymCenter> pendingGymCentres) {
-            System.out.println("----");
-            System.out.printf("%-8s\t", "CENTRE-ID");
-            System.out.printf("%-8s\t", "NAME");
-            System.out.printf("%-6s\t", "CITY");
-            System.out.printf("%12s\t", "OWNER-ID");
-            System.out.printf("%8s\t", "CAPACITY");
-            System.out.printf("%-8s\t\n", "IS-APPROVED");
-            System.out.println("----");
-            System.out.println("");
-            for(GymCenter gymCenter: pendingGymCentres) {
-                System.out.printf("%-8s\t", gymCenter.getGymCenterId());
-                System.out.printf("%-8s\t", gymCenter.getGymCenterName());
-                System.out.printf("%-8s\t", gymCenter.getCity());
-                System.out.printf("%-8s\t", gymCenter.getOwnerID());
-                System.out.printf("%-8s\t", gymCenter.getCapacity());
-                if(!gymCenter.isApproved()) System.out.println("No\n");
-                else if(gymCenter.isApproved()) System.out.println("Yes\n");
-                else System.out.println("Pending\n");
-            }
-            System.out.println("----");
-    }
-
-    public static void AdminMenu() {
-        System.out.println("Welcome to Admin Menu");
-    }
-
     public void adminClientMainPage(){
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = currentTime.format(myFormat);
-        System.out.println("WELCOME ADMIN!!\nLogin Time: "+currentTime);
+        System.out.println("Welcome ADMIN to FlipFit Application\nLogin Time: "+ currentTime);
         while(true){
             System.out.println("0. View All Gym Owners\n1. View All Gym Centres\n2. View Pending GymOwner Approval Requests\n3. View Pending GymCenter's Approval Requests\n4. Go Back To Previous Menu");
             int pendingChoice = scanner.nextInt();
