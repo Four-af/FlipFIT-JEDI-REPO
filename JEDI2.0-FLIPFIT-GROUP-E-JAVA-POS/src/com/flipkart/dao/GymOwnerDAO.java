@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GymOwnerDAO {
+public class GymOwnerDAO implements GymOwnerInterfaceDAO {
 
     private Connection conn = null; /** Connection to the database */
     private PreparedStatement statement = null; /** SQL Query Statement */

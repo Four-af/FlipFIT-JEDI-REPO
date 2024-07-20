@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class SlotDAO {
+public class SlotDAO implements SlotInterfaceDAO {
 
     public SlotDAO(){
     }
