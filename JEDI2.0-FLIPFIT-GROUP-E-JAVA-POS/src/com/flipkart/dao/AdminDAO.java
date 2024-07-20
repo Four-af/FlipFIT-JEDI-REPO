@@ -5,7 +5,7 @@ import com.flipkart.bean.GymOwner;
 
 import java.util.List;
 
-public class AdminDAO {
+public class AdminDAO implements AdminInterfaceDAO {
 
     private static GymOwnerDAO gymOwnerDAO = new GymOwnerDAO();
     private static GymCenterDAO gymCentreDAO = new GymCenterDAO();
@@ -26,8 +26,5 @@ public class AdminDAO {
     public List<GymCenter> getPendingGymCentres() {
         return gymCentreDAO.getPendingGymCentreList();
     }
-
-
-
 
 }
