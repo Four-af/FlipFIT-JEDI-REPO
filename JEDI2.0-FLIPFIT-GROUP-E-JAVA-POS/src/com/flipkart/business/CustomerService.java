@@ -5,6 +5,8 @@ import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.dao.CustomerDAO;
+import com.flipkart.exceptions.RegistrationFailedException;
+import com.flipkart.exceptions.UserInvalidException;
 import com.flipkart.utils.UserPlan;
 
 import java.util.Date;
@@ -68,7 +70,7 @@ public class CustomerService implements CustomerInterface {
     public void registerCustomer(String userName, String password, String email, String phoneNumber, String cardNumber) {
         try {
             customerDAO.registerCustomer(userName,password,email,phoneNumber,cardNumber);
-        } catch (Exception e) {
+        } catch (RegistrationFailedException e) {
             e.getMessage();
         }
     }
@@ -81,7 +83,7 @@ public class CustomerService implements CustomerInterface {
     public boolean isUserValid(String userName, String password) {
         try {
             return customerDAO.isUserValid(userName,password);
-        } catch (Exception e) {
+        } catch (UserInvalidException e) {
             System.out.println(e.getMessage());
         }
         return false;

@@ -7,6 +7,7 @@ import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.CustomerInterface;
 import com.flipkart.business.CustomerService;
+import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.utils.Util;
 import com.flipkart.utils.UserPlan;
 

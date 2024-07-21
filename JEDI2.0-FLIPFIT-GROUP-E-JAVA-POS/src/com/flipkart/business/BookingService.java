@@ -3,6 +3,7 @@ package com.flipkart.business;
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.Slot;
 import com.flipkart.dao.BookingDAO;
+import com.flipkart.exceptions.BookingFailedException;
 import com.flipkart.utils.UserPlan;
 
 import java.util.Date;
@@ -27,7 +28,7 @@ public class BookingService implements BookingInterface {
                 return;
             }
             bookingDAO.addBooking(userName, scheduleID);
-        } catch (Exception e) {
+        } catch (BookingFailedException e) {
             System.out.println("Failed to add booking");
         }
     }
@@ -35,7 +36,7 @@ public class BookingService implements BookingInterface {
     public List<Booking> getBookingByCustomerId(String customerId){
         try {
             return bookingDAO.getBookingByCustomerId(customerId);
-        } catch (Exception e) {
+        } catch (BookingFailedException e) {
             System.out.println("Failed to get booking");
         }
         return null;
@@ -50,7 +51,7 @@ public class BookingService implements BookingInterface {
             Booking booking  = bookingDAO.getBookingByBookingId(bookingID);
             bookingDAO.cancelBookingById(bookingID);
             scheduleService.modifySchedule(booking.getScheduleID(),1);
-        } catch (Exception e) {
+        } catch (BookingFailedException e) {
             System.out.println("Failed to cancel booking");
         }
     }

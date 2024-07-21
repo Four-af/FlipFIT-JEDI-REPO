@@ -1,6 +1,8 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.Role;
+import com.flipkart.exceptions.LoginFailedException;
+import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.utils.DatabaseConnector;
 
 import java.text.ParseException;
@@ -58,7 +60,7 @@ public class FlipFitApplication {
                     System.out.println("Invalid Option Selected");
                     break;
             }
-        }catch (IllegalArgumentException | ParseException e){
+        }catch (IllegalArgumentException | ParseException | LoginFailedException e){
             System.out.println("Invalid Option Selected");
         }
     }
