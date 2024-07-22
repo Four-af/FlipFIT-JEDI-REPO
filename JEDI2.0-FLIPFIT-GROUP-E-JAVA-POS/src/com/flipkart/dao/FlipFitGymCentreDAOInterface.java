@@ -4,7 +4,7 @@ import com.flipkart.bean.GymCenter;
 
 import java.util.List;
 
-public interface GymCentreDAOInterface {
+public interface FlipFitGymCentreDAOInterface {
 
     List<GymCenter> viewAllGymCenters();
     List<GymCenter> getAllCentresByOwnerId(String gymOwnerId);

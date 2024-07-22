@@ -5,7 +5,7 @@ import com.flipkart.bean.GymOwner;
 
 import java.util.List;
 
-public interface AdminDAOInterface {
+public interface FlipFitAdminDAOInterface {
     public List<GymOwner> getPendingGymOwners();
     public void validateGymOwner(String gymOwnerId, boolean isApproved);
     public void validateGymCentre(String gymCentreId, boolean isApproved);

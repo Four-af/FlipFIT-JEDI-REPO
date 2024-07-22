@@ -4,7 +4,7 @@ import com.flipkart.bean.Booking;
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.GymCenter;
 import com.flipkart.bean.Slot;
-import com.flipkart.dao.CustomerDAO;
+import com.flipkart.dao.FlipFitCustomerDAO;
 import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.exceptions.UserInvalidException;
 import com.flipkart.utils.UserPlan;
@@ -18,7 +18,7 @@ public class CustomerService implements CustomerInterface {
     private BookingInterface bookingService = new BookingService();
     private ScheduleInterface scheduleService = new ScheduleService();
     private SlotInterface slotService = new SlotService();
-    private CustomerDAO customerDAO = new CustomerDAO();
+    private FlipFitCustomerDAO customerDAO = new FlipFitCustomerDAO();
 
     public List<GymCenter> getAllGymCenterDetailsByCity(String city){
         //takes City (Location) as input and returns List<GymCenter>

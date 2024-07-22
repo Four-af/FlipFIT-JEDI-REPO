@@ -7,12 +7,12 @@ import java.util.List;
 
 import com.flipkart.bean.Slot;
 import com.flipkart.bean.Schedule;
-import com.flipkart.dao.ScheduleDAO;
+import com.flipkart.dao.FlipFitScheduleDAO;
 public class ScheduleService implements ScheduleInterface {
 
     private final GymCenterService gymCentreService = new GymCenterService();
     private final SlotService slotService = new SlotService();
-    private final ScheduleDAO scheduleDAO = new ScheduleDAO();
+    private final FlipFitScheduleDAO flipFitScheduleDAO = new FlipFitScheduleDAO();
 
     public Schedule createSchedule(Date date, String slotId){
         String centreID = slotService.getSlotByID(slotId).getCenterID();
@@ -20,13 +20,13 @@ public class ScheduleService implements ScheduleInterface {
         Schedule schedule = new Schedule(date.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate(), slotId, availability);
-        scheduleDAO.addSchedule(schedule);
+        flipFitScheduleDAO.addSchedule(schedule);
 
         return schedule;
     }
 
     public Schedule getScheduleByDateAndSlotId(String SlotId, Date date){
-        List<Schedule> scheduleList = scheduleDAO.getAllScheduleByDate(date);
+        List<Schedule> scheduleList = flipFitScheduleDAO.getAllScheduleByDate(date);
         for(Schedule schedule: scheduleList){
             if(schedule.getSlotId().equals(SlotId))
                 return schedule;
@@ -36,7 +36,7 @@ public class ScheduleService implements ScheduleInterface {
     }
 
     public boolean modifySchedule(String scheduleId,int action){
-        return scheduleDAO.modifySchedule(scheduleId, action);
+        return flipFitScheduleDAO.modifySchedule(scheduleId, action);
     }
 
     public List<Schedule> checkAvailability(String centreID, Date date){
@@ -56,7 +56,7 @@ public class ScheduleService implements ScheduleInterface {
         List<Slot> allSlotsOfThatCentre = slotService.getAllSlotsByCentre(centreID);
         List<Slot> response = slotService.getAllSlotsByCentre(centreID);
         for(Slot slot: allSlotsOfThatCentre){
-            for(Schedule schedule: scheduleDAO.getAllScheduleByDate(date)){
+            for(Schedule schedule: flipFitScheduleDAO.getAllScheduleByDate(date)){
                 if (slotService.getSlotByID(schedule.getSlotId()).getCenterID().equals(centreID)){
                     if(schedule.getAvailability() <= 0){
                         response.remove(slot);
@@ -68,7 +68,7 @@ public class ScheduleService implements ScheduleInterface {
     }
 
     public Schedule getSchedule(String scheduleID){
-        return scheduleDAO.getSchedule(scheduleID);
+        return flipFitScheduleDAO.getSchedule(scheduleID);
     }
 
     public Schedule getOrCreateSchedule(String slotId, Date date) {

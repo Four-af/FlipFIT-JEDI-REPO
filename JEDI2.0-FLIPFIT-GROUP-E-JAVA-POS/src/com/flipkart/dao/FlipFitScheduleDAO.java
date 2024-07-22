@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleDAO implements ScheduleDAOInterface {
+public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
 
     public void addSchedule( Schedule schedule){
         try{
