@@ -36,9 +36,9 @@ public class BookingDAO implements BookingDAOInterface {
                 customerBookings.add(booking);
             }
         }
-        if (customerBookings.isEmpty()) {
-            System.out.println("No bookings found for customer ID: " + customerId);
-        }
+//        if (customerBookings.isEmpty()) {
+//            System.out.println("No bookings found for customer ID: " + customerId);
+//        }
         return customerBookings;
     }
 
