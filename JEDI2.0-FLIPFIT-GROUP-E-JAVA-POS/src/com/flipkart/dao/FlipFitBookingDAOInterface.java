@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
-public interface BookingDAOInterface {
+public interface FlipFitBookingDAOInterface {
     void  addBooking(String userName, String scheduleID);
     List<Booking> getBookingByCustomerId(String customerId);
     void cancelBookingById(String bookingID);

@@ -5,18 +5,18 @@ import com.flipkart.bean.GymOwner;
 
 import java.util.List;
 
-public class AdminDAO implements AdminDAOInterface {
+public class FlipFitAdminDAO implements FlipFitAdminDAOInterface {
 
-    private static GymOwnerDAO gymOwnerDAO = new GymOwnerDAO();
-    private static GymCenterDAO gymCentreDAO = new GymCenterDAO();
+    private static FlipFitGymOwnerDAO flipFitGymOwnerDAO = new FlipFitGymOwnerDAO();
+    private static FlipFitGymCenterDAO gymCentreDAO = new FlipFitGymCenterDAO();
 
 
     public List<GymOwner> getPendingGymOwners() {
-        return gymOwnerDAO.getPendingGymOwnerList();
+        return flipFitGymOwnerDAO.getPendingGymOwnerList();
     }
 
     public void validateGymOwner(String gymOwnerId, boolean isApproved) {
-        gymOwnerDAO.validateGymOwner(gymOwnerId, isApproved);
+        flipFitGymOwnerDAO.validateGymOwner(gymOwnerId, isApproved);
     }
 
     public void validateGymCentre(String gymCentreId, boolean isApproved) {

@@ -57,7 +57,7 @@ public class FlipFitCustomerMenu {
     }
 
     private void bookSlotSubMenu(String userName) throws ParseException {
-        System.out.println("Provide Location to search :");
+        System.out.println("Provide Location to search : ");
         String location = scanner.next();
         List<GymCenter> centreListByLocation = customerService.getAllGymCenterDetailsByCity(location);
         Util.printGymCentres(centreListByLocation);
@@ -66,7 +66,7 @@ public class FlipFitCustomerMenu {
             bookSlotSubMenu(userName);
             return;
         }
-        System.out.print("Choose a gymCentre ID to proceed:");
+        System.out.print("Choose a gymCentre ID to proceed: ");
         String chosenGym = scanner.next();
         Date date = selectDate();
         chooseSlot(chosenGym,userName,date,chosenGym);

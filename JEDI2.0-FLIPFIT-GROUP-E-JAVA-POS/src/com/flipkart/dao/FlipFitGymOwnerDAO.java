@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GymOwnerDAO implements GymOwnerDAOInterface {
+public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
 
     private Connection conn = null; /** Connection to the database */
     private PreparedStatement statement = null; /** SQL Query Statement */
@@ -22,7 +22,7 @@ public class GymOwnerDAO implements GymOwnerDAOInterface {
     /**
      * Constructor class
      */
-    public GymOwnerDAO() {}
+    public FlipFitGymOwnerDAO() {}
 
     /**
      * Makes an API call to the database to fetch the

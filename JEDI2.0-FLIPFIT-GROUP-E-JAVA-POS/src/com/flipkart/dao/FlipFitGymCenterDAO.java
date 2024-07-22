@@ -14,12 +14,12 @@ import java.sql.SQLException;
 
 import static com.flipkart.constants.SQLConstants.*;
 
-public class GymCenterDAO implements GymCentreDAOInterface {
+public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
 
     private Connection conn = null;
     private PreparedStatement statement = null;
 
-    public GymCenterDAO()  {
+    public FlipFitGymCenterDAO()  {
     }
 
     public List<GymCenter> viewAllGymCenters() {

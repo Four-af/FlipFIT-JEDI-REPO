@@ -2,7 +2,7 @@ package com.flipkart.business;
 
 import com.flipkart.bean.Booking;
 import com.flipkart.bean.Slot;
-import com.flipkart.dao.BookingDAO;
+import com.flipkart.dao.FlipFitBookingDAO;
 import com.flipkart.exceptions.BookingFailedException;
 import com.flipkart.utils.UserPlan;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BookingService implements BookingInterface {
 
-    private final BookingDAO bookingDAO = new BookingDAO();
+    private final FlipFitBookingDAO bookingDAO = new FlipFitBookingDAO();
     private final ScheduleService scheduleService  = new ScheduleService();
     private final SlotService slotService = new SlotService();
 

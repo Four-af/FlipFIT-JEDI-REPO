@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import static com.flipkart.constants.SQLConstants.*;
 
-public class CustomerDAO implements CustomereDAOInterface {
+public class FlipFitCustomerDAO implements FlipFitCustomereDAOInterface {
 
     public void registerCustomer(String userName, String password, String email, String phoneNumber, String cardNumber) throws RegistrationFailedException {
         try {

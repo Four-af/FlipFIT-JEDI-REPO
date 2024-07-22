@@ -4,7 +4,7 @@ import com.flipkart.bean.Slot;
 
 import java.util.List;
 
-public interface SlotDAOInterface {
+public interface FlipFitSlotDAOInterface {
     public List<Slot> getSlotList();
     public List<Slot> getSlotByCentreId(String gymCentreId);
     public void addSlot(Slot slot);

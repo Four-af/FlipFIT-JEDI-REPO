@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-public class BookingDAO implements BookingDAOInterface {
+public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
 
     private List<Booking> bookingList = new ArrayList<>();
-    private ScheduleDAO scheduleDAO = new ScheduleDAO();
+    private FlipFitScheduleDAO flipFitScheduleDAO = new FlipFitScheduleDAO();
 
     public void addBooking(String userName, String scheduleID) {
         try {
@@ -47,7 +47,7 @@ public class BookingDAO implements BookingDAOInterface {
         try {
             List<Booking> customerBookings = getBookingByCustomerId(customerId);
             for (Booking booking : customerBookings) {
-                Schedule schedule = scheduleDAO.getSchedule(booking.getScheduleID());
+                Schedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
                 UserPlan userPlan = new UserPlan(
                         schedule.getSlotId(),
                         "123",
