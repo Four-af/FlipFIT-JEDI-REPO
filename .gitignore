@@ -1,5 +1,5 @@
 out
 .idea
 bin
-JEDI2.0-FLIPFIT-GROUP-E-JAVA-POS/src/com/flipkart/config.properties
+JEDI2.0-FLIPFIT-GROUP-E-JAVA-POS/src/com/flipkart/dbConfig.properties
 JEDI2.0-FLIPFIT-GROUP-E-JAVA-POS/src/com/flipkart/utils/DatabaseConnector.java
