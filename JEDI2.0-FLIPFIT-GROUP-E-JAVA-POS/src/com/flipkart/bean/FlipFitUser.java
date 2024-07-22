@@ -1,10 +1,7 @@
 package com.flipkart.bean;
 
 /**
- *
- * @author JEDI-E
- * User Class
- *
+ * Represents a FlipFit User
  */
 
 public class FlipFitUser {

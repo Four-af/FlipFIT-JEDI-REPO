@@ -3,10 +3,7 @@ package com.flipkart.bean;
 import java.time.LocalTime;
 
 /**
- *
- * @author JEDI-E
- * Slot Class
- *
+ * Represents a slot of a FlipFit GymCentre
  */
 
 public class FlipFitSlot {
