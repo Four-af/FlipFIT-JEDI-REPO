@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
 
@@ -60,45 +61,46 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
         return allUserPlan;
     }
 
+
     public boolean checkBookingOverlap(String customerId, Date date, LocalTime localTime) {
         LocalTime endTime = localTime.plusHours(1);
         List<UserPlan> allUserPlan = getCustomerPlan(customerId);
-        for (UserPlan userPlan : allUserPlan) {
-            if (userPlan.getDate().equals(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
-                LocalTime bookedStartTime = userPlan.getTime();
-                LocalTime bookedEndTime = bookedStartTime.plusHours(1);
 
-                if (localTime.isBefore(bookedEndTime) && endTime.isAfter(bookedStartTime)) {
-                    return true; // Overlap found
-                }
-            }
-        }
-        return false; // No overlap
+        // Use stream to iterate over allUserPlan and check for overlap
+        return allUserPlan.stream()
+                .filter(userPlan -> userPlan.getDate().equals(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()))
+                .anyMatch(userPlan -> {
+                    LocalTime bookedStartTime = userPlan.getTime();
+                    LocalTime bookedEndTime = bookedStartTime.plusHours(1);
+                    return localTime.isBefore(bookedEndTime) && endTime.isAfter(bookedStartTime);
+                });
     }
 
     public void cancelBookingById(String bookingID) {
-        FlipFitBooking bookingToRemove = null;
-        for (FlipFitBooking booking : bookingList) {
-            if (booking.getBookingID().equals(bookingID)) {
-                bookingToRemove = booking;
-                break;
-            }
-        }
-        if (bookingToRemove != null) {
-            bookingList.remove(bookingToRemove);
+        Optional<FlipFitBooking> bookingToRemove = bookingList.stream()
+                .filter(booking -> booking.getBookingID().equals(bookingID))
+                .findFirst();
+
+        if (bookingToRemove.isPresent()) {
+            bookingList.remove(bookingToRemove.get());
             System.out.println("Booking canceled successfully");
         } else {
             System.out.println("Could not cancel booking for BookingId: " + bookingID);
         }
     }
 
+
     public FlipFitBooking getBookingByBookingId(String bookingId) {
-        for (FlipFitBooking booking : bookingList) {
-            if (booking.getBookingID().equals(bookingId)) {
-                return booking;
-            }
+        Optional<FlipFitBooking> optionalBooking = bookingList.stream()
+                .filter(booking -> booking.getBookingID().equals(bookingId))
+                .findFirst();
+
+        if (optionalBooking.isPresent()) {
+            return optionalBooking.get();
+        } else {
+            System.out.println("Could not fetch booking by bookingId: " + bookingId);
+            return null;
         }
-        System.out.println("Could not fetch booking by bookingId: " + bookingId);
-        return null;
     }
+
 }
