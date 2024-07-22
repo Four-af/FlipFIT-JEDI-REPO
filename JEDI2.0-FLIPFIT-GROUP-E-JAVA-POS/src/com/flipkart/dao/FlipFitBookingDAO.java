@@ -36,9 +36,6 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
                 customerBookings.add(booking);
             }
         }
-//        if (customerBookings.isEmpty()) {
-//            System.out.println("No bookings found for customer ID: " + customerId);
-//        }
         return customerBookings;
     }
 
