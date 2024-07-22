@@ -4,10 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- *
- * @author JEDI-E
- * Schedule Class
- *
+ * Represents Schedule of any GymCentre Slot
  */
 
 public class FlipFitSchedule {
