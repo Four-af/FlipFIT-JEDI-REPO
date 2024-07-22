@@ -1,7 +1,7 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Booking;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.dao.FlipFitBookingDAO;
 import com.flipkart.exceptions.BookingFailedException;
 import com.flipkart.utils.UserPlan;
@@ -9,14 +9,14 @@ import com.flipkart.utils.UserPlan;
 import java.util.Date;
 import java.util.List;
 
-public class BookingService implements BookingInterface {
+public class FlipFitBookingService implements FlipFitBookingInterface {
 
     private final FlipFitBookingDAO bookingDAO = new FlipFitBookingDAO();
-    private final ScheduleService scheduleService  = new ScheduleService();
-    private final SlotService slotService = new SlotService();
+    private final FlipFitScheduleService scheduleService  = new FlipFitScheduleService();
+    private final FlipFitSlotService slotService = new FlipFitSlotService();
 
     public boolean checkBookingOverlap(String customerId, Date date, String slotId){
-        Slot slot = slotService.getSlotByID(slotId);
+        FlipFitSlot slot = slotService.getSlotByID(slotId);
         return bookingDAO.checkBookingOverlap(customerId,date,slot.getTime());
     }
 
@@ -33,7 +33,7 @@ public class BookingService implements BookingInterface {
         }
     }
 
-    public List<Booking> getBookingByCustomerId(String customerId){
+    public List<FlipFitBooking> getBookingByCustomerId(String customerId){
         try {
             return bookingDAO.getBookingByCustomerId(customerId);
         } catch (BookingFailedException e) {
@@ -48,7 +48,7 @@ public class BookingService implements BookingInterface {
 
     public void cancelBooking(String bookingID) {
         try {
-            Booking booking  = bookingDAO.getBookingByBookingId(bookingID);
+            FlipFitBooking booking  = bookingDAO.getBookingByBookingId(bookingID);
             bookingDAO.cancelBookingById(bookingID);
             scheduleService.modifySchedule(booking.getScheduleID(),1);
         } catch (BookingFailedException e) {

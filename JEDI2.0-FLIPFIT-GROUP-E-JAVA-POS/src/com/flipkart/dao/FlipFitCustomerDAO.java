@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Customer;
+import com.flipkart.bean.FlipFitCustomer;
 import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.exceptions.UserInvalidException;
 import com.flipkart.utils.DatabaseConnector;
@@ -54,8 +54,8 @@ public class FlipFitCustomerDAO implements FlipFitCustomereDAOInterface {
         return false;
     }
 
-    public Customer getCustomerById(String userName) {
-        Customer customer = new Customer();
+    public FlipFitCustomer getCustomerById(String userName) {
+        FlipFitCustomer customer = new FlipFitCustomer();
         try {
             Connection conn = DatabaseConnector.connect();
             PreparedStatement stmt = conn.prepareStatement(GET_CUSTOMER_BY_ID);

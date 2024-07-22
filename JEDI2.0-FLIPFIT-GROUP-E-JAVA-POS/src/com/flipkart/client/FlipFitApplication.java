@@ -1,9 +1,7 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.Role;
+import com.flipkart.bean.FlipFitRole;
 import com.flipkart.exceptions.LoginFailedException;
-import com.flipkart.exceptions.RegistrationFailedException;
-import com.flipkart.utils.DatabaseConnector;
 
 import java.text.ParseException;
 import java.util.Scanner;
@@ -38,7 +36,7 @@ public class FlipFitApplication {
     private static void login(){
         try {
             System.out.println("Enter your Role");
-            Role role = Role.valueOf(scanner.next().toUpperCase());
+            FlipFitRole role = FlipFitRole.valueOf(scanner.next().toUpperCase());
 
             System.out.println("Enter your Username");
             String userName = scanner.next();
@@ -68,7 +66,7 @@ public class FlipFitApplication {
     private static void registration(){
         try {
             System.out.println("Enter your role");
-            Role role = Role.valueOf(scanner.next().toUpperCase());
+            FlipFitRole role = FlipFitRole.valueOf(scanner.next().toUpperCase());
 
             switch (role){
                 case ADMIN:

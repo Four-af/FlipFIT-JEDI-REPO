@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGymOwner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
 
     private Connection conn = null; /** Connection to the database */
     private PreparedStatement statement = null; /** SQL Query Statement */
-    private List<GymOwner> gymOwnerList = new ArrayList<>();
+    private List<FlipFitGymOwner> gymOwnerList = new ArrayList<>();
 
     /**
      * Constructor class
@@ -29,15 +29,15 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
      * complete list of all GymOwners registered with GMS.
      * @return         list of gym owner list
      */
-    public List<GymOwner> getGymOwnerList() {
+    public List<FlipFitGymOwner> getGymOwnerList() {
 
-        List<GymOwner> resGymOwnerList = new ArrayList<>();
+        List<FlipFitGymOwner> resGymOwnerList = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             statement = conn.prepareStatement(SQLConstants.FETCH_ALL_GYM_OWNERS_QUERY);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymOwner owner = new GymOwner(
+                FlipFitGymOwner owner = new FlipFitGymOwner(
                         rs.getString("id"),
                         rs.getString("name"),
                         rs.getString("email"),
@@ -61,7 +61,7 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
      * @param  gymOwnerList     existing list
      * @return                  void
      */
-    public void setGymOwnerList(List<GymOwner> gymOwnerList) {
+    public void setGymOwnerList(List<FlipFitGymOwner> gymOwnerList) {
         this.gymOwnerList = gymOwnerList;
     }
 
@@ -105,7 +105,7 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
      * @param  gymOwner     complete GymOwner object of a new gym owner
      * @return              void
      */
-    public void registerGymOwner(GymOwner gymOwner){
+    public void registerGymOwner(FlipFitGymOwner gymOwner){
         try{
             conn  = DatabaseConnector.connect();
             statement = conn.prepareStatement(SQLConstants.REGISTER_GYM_OWNER);
@@ -133,15 +133,15 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
      * status is "Pending"
      * @return         list of GymOwner objects with approval status as Pending
      */
-    public List<GymOwner> getPendingGymOwnerList() {
+    public List<FlipFitGymOwner> getPendingGymOwnerList() {
 
-        List<GymOwner> pendingList = new ArrayList<>();
+        List<FlipFitGymOwner> pendingList = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             statement = conn.prepareStatement(SQLConstants.FETCH_ALL_PENDING_GYM_OWNERS_QUERY);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymOwner owner = new GymOwner(rs.getString("id"),rs.getString("name"), rs.getString("email"), rs.getString("password"), rs.getString("panNumber"), rs.getString("cardDetails"));
+                FlipFitGymOwner owner = new FlipFitGymOwner(rs.getString("id"),rs.getString("name"), rs.getString("email"), rs.getString("password"), rs.getString("panNumber"), rs.getString("cardDetails"));
                 owner.setApproved(rs.getBoolean("isApproved"));
                 pendingList.add(owner);
             }

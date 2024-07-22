@@ -1,13 +1,13 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 
 import java.util.List;
 
 public interface FlipFitSlotDAOInterface {
-    public List<Slot> getSlotList();
-    public List<Slot> getSlotByCentreId(String gymCentreId);
-    public void addSlot(Slot slot);
-    public Slot getSlotById(String slotID);
-    public Slot getSlotByIdandCentreId(String slotID,String gymCentreId);
+    public List<FlipFitSlot> getSlotList();
+    public List<FlipFitSlot> getSlotByCentreId(String gymCentreId);
+    public void addSlot(FlipFitSlot slot);
+    public FlipFitSlot getSlotById(String slotID);
+    public FlipFitSlot getSlotByIdandCentreId(String slotID, String gymCentreId);
 }

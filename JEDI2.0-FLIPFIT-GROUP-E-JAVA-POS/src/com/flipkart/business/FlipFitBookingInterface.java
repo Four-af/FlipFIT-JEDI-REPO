@@ -1,15 +1,15 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Booking;
+import com.flipkart.bean.FlipFitBooking;
 import com.flipkart.utils.UserPlan;
 
 import java.util.Date;
 import java.util.List;
 
-public interface BookingInterface {
+public interface FlipFitBookingInterface {
     boolean checkBookingOverlap(String customerId, Date date, String slotId);
     void addBooking(String userId, String scheduleID);
-    List<Booking> getBookingByCustomerId(String customerId);
+    List<FlipFitBooking> getBookingByCustomerId(String customerId);
     void cancelBooking(String bookingID);
     List<UserPlan> getCustomerPlan(String customerId);
 }

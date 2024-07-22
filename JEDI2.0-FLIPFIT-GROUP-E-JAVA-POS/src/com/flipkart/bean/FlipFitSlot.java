@@ -2,12 +2,12 @@ package com.flipkart.bean;
 
 import java.time.LocalTime;
 
-public class Slot {
+public class FlipFitSlot {
     private String slotId;
     private String centerID;
     private LocalTime time;
 
-    public Slot(String slotId, String centerID, LocalTime time) {
+    public FlipFitSlot(String slotId, String centerID, LocalTime time) {
         this.slotId = slotId;
         this.centerID = centerID;
         this.time = time;

@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Booking;
-import com.flipkart.bean.Schedule;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitSchedule;
 import com.flipkart.utils.UserPlan;
 
 import java.time.LocalTime;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
 
-    private List<Booking> bookingList = new ArrayList<>();
+    private List<FlipFitBooking> bookingList = new ArrayList<>();
     private FlipFitScheduleDAO flipFitScheduleDAO = new FlipFitScheduleDAO();
 
     public void addBooking(String userName, String scheduleID) {
@@ -21,7 +21,7 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
             String bookingId = userName + scheduleID;
 
             // Assuming a successful booking adds to the list
-            Booking booking = new Booking(bookingId, userName, scheduleID);
+            FlipFitBooking booking = new FlipFitBooking(bookingId, userName, scheduleID);
             bookingList.add(booking);
             System.out.println("Booking added successfully");
         } catch (Exception e) {
@@ -29,9 +29,9 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
         }
     }
 
-    public List<Booking> getBookingByCustomerId(String customerId) {
-        List<Booking> customerBookings = new ArrayList<>();
-        for (Booking booking : bookingList) {
+    public List<FlipFitBooking> getBookingByCustomerId(String customerId) {
+        List<FlipFitBooking> customerBookings = new ArrayList<>();
+        for (FlipFitBooking booking : bookingList) {
             if (booking.getUserID().equals(customerId)) {
                 customerBookings.add(booking);
             }
@@ -45,9 +45,9 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
     public List<UserPlan> getCustomerPlan(String customerId) {
         List<UserPlan> allUserPlan = new ArrayList<>();
         try {
-            List<Booking> customerBookings = getBookingByCustomerId(customerId);
-            for (Booking booking : customerBookings) {
-                Schedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
+            List<FlipFitBooking> customerBookings = getBookingByCustomerId(customerId);
+            for (FlipFitBooking booking : customerBookings) {
+                FlipFitSchedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
                 UserPlan userPlan = new UserPlan(
                         schedule.getSlotId(),
                         "123",
@@ -80,8 +80,8 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
     }
 
     public void cancelBookingById(String bookingID) {
-        Booking bookingToRemove = null;
-        for (Booking booking : bookingList) {
+        FlipFitBooking bookingToRemove = null;
+        for (FlipFitBooking booking : bookingList) {
             if (booking.getBookingID().equals(bookingID)) {
                 bookingToRemove = booking;
                 break;
@@ -95,8 +95,8 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
         }
     }
 
-    public Booking getBookingByBookingId(String bookingId) {
-        for (Booking booking : bookingList) {
+    public FlipFitBooking getBookingByBookingId(String bookingId) {
+        for (FlipFitBooking booking : bookingList) {
             if (booking.getBookingID().equals(bookingId)) {
                 return booking;
             }

@@ -1,7 +1,7 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.business.*;
 
 import java.time.LocalDateTime;
@@ -15,9 +15,9 @@ import static com.flipkart.utils.Util.*;
 
 public class FlipFitGymOwnerMenu {
 
-    private GymOwnerInterface gymOwnerService = new GymOwnerService();
-    private SlotInterface slotService = new SlotService();
-    private GymCenterInterface gymCentreService = new GymCenterService();
+    private FlipFitGymOwnerInterface gymOwnerService = new FlipFitGymOwnerService();
+    private FlipFitSlotInterface slotService = new FlipFitSlotService();
+    private FlipFitGymCenterInterface gymCentreService = new FlipFitGymCenterService();
 
     public boolean gymOwnerLogin(String userName, String password) {
         if (gymOwnerService.loginGymOwner(userName,password)) {
@@ -68,7 +68,7 @@ public class FlipFitGymOwnerMenu {
             switch (choice){
 
                 case 0:
-                    List<GymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
+                    List<FlipFitGymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
                     printGymCentres(allGymCentres);
                     break;
 
@@ -97,7 +97,7 @@ public class FlipFitGymOwnerMenu {
                     int price = scanner.nextInt();
 
                     gymCentreService.addCenter(
-                            new GymCenter(
+                            new FlipFitGymCenter(
                                     gymId,
                                     gymOwnerId,
                                     gymCentreName,
@@ -123,7 +123,7 @@ public class FlipFitGymOwnerMenu {
                     boolean isAdding = true;
                     String centerId = null;
 
-                    List<Slot> newSlotList = new ArrayList<>();
+                    List<FlipFitSlot> newSlotList = new ArrayList<>();
                     while (isAdding) {
                         System.out.println("Enter new slot id: ");
                         String slotId = scanner.next();
@@ -137,7 +137,7 @@ public class FlipFitGymOwnerMenu {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                         LocalTime localTime = LocalTime.parse(time, formatter);
 
-                        newSlotList.add(new Slot(
+                        newSlotList.add(new FlipFitSlot(
                                 slotId,
                                 centerId,
                                 localTime

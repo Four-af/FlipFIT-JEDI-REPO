@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Schedule;
+import com.flipkart.bean.FlipFitSchedule;
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.utils.DatabaseConnector;
 
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
 
-    public void addSchedule( Schedule schedule){
+    public void addSchedule( FlipFitSchedule schedule){
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.ADD_SCHEDULE);
@@ -31,8 +31,8 @@ public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
 
     }
 
-    public Schedule getSchedule(String scheduleId){
-        Schedule schedule = null;
+    public FlipFitSchedule getSchedule(String scheduleId){
+        FlipFitSchedule schedule = null;
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.GET_SCHEDULE_BY_ID);
@@ -43,7 +43,7 @@ public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
                 int availability = rs.getInt("availability");
                 String date = rs.getString("date");
                 LocalDate localDate = LocalDate.parse(date);
-                schedule = new Schedule(localDate, slotId, availability);
+                schedule = new FlipFitSchedule(localDate, slotId, availability);
                 schedule.setScheduleID(scheduleId);
             }
         } catch (SQLException e) {
@@ -52,13 +52,13 @@ public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
         return schedule;
     }
 
-    public List<Schedule> getAllScheduleByDate(java.sql.Date date) {
+    public List<FlipFitSchedule> getAllScheduleByDate(java.sql.Date date) {
         return List.of();
     }
 
 
-    public List<Schedule> getAllScheduleByDate(Date date) {
-        ArrayList<Schedule> response = new ArrayList<>();
+    public List<FlipFitSchedule> getAllScheduleByDate(Date date) {
+        ArrayList<FlipFitSchedule> response = new ArrayList<>();
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.GET_SCHEDULES_BY_DATE);
@@ -70,7 +70,7 @@ public class FlipFitScheduleDAO implements FlipFitScheduleDAOInterface {
                 String slotId = rs.getString("slotId");
                 int availability = rs.getInt("availability");
                 LocalDate localDate = LocalDate.parse(date.toString());
-                Schedule schedule = new Schedule( localDate, slotId, availability);
+                FlipFitSchedule schedule = new FlipFitSchedule( localDate, slotId, availability);
                 schedule.setScheduleID(scheduleId);
                 response.add(schedule);
             }

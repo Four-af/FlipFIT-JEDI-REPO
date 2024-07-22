@@ -1,9 +1,9 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Booking;
-import com.flipkart.bean.Customer;
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitCustomer;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.dao.FlipFitCustomerDAO;
 import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.exceptions.UserInvalidException;
@@ -12,25 +12,25 @@ import com.flipkart.utils.UserPlan;
 import java.util.Date;
 import java.util.List;
 
-public class CustomerService implements CustomerInterface {
+public class FlipFitCustomerService implements FlipFitCustomerInterface {
 
-    private GymCenterInterface gymCentreService = new GymCenterService();
-    private BookingInterface bookingService = new BookingService();
-    private ScheduleInterface scheduleService = new ScheduleService();
-    private SlotInterface slotService = new SlotService();
+    private FlipFitGymCenterInterface gymCentreService = new FlipFitGymCenterService();
+    private FlipFitBookingInterface bookingService = new FlipFitBookingService();
+    private FlipFitScheduleInterface scheduleService = new FlipFitScheduleService();
+    private FlipFitSlotInterface slotService = new FlipFitSlotService();
     private FlipFitCustomerDAO customerDAO = new FlipFitCustomerDAO();
 
-    public List<GymCenter> getAllGymCenterDetailsByCity(String city){
+    public List<FlipFitGymCenter> getAllGymCenterDetailsByCity(String city){
         //takes City (Location) as input and returns List<GymCenter>
         return gymCentreService.getCentresByCity(city);
     }
 
     @Override
-    public List<Slot> getAvailableSlots(String centreID, Date date) {
+    public List<FlipFitSlot> getAvailableSlots(String centreID, Date date) {
         return gymCentreService.getAvailableSlotsByCentreAndDate(centreID,date);
     }
 
-    public List<Booking> getCustomerBookings(String customerId){
+    public List<FlipFitBooking> getCustomerBookings(String customerId){
         //takes userId and returns List<Bookings>
         return bookingService.getBookingByCustomerId(customerId);
     }
@@ -76,7 +76,7 @@ public class CustomerService implements CustomerInterface {
     }
 
     @Override
-    public Customer viewMyProfile(String userName) {
+    public FlipFitCustomer viewMyProfile(String userName) {
         return customerDAO.getCustomerById(userName);
     }
 

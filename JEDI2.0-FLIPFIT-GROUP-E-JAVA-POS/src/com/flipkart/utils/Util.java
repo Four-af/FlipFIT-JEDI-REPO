@@ -1,9 +1,9 @@
 package com.flipkart.utils;
 
-import com.flipkart.bean.Customer;
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitCustomer;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitSlot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Util {
 
-    public static void printGymCentres(List<GymCenter> centreListByLocation) {
+    public static void printGymCentres(List<FlipFitGymCenter> centreListByLocation) {
         System.out.println("-----");
         System.out.printf("%-8s\t", "Centre-ID");
         System.out.printf("%-8s\t", "OWNER-ID");
@@ -23,7 +23,7 @@ public class Util {
         System.out.printf("%-8s\t", "PRICE");
         System.out.printf("%-8s\t\n", "APPROVED");
         System.out.println("-----");
-        for(GymCenter gymCenter: centreListByLocation) {
+        for(FlipFitGymCenter gymCenter: centreListByLocation) {
             System.out.printf("%-8s\t", gymCenter.getGymCenterId());
             System.out.printf("%-8s\t", gymCenter.getOwnerID());
             System.out.printf("%-8s\t",gymCenter.getGymCenterName());
@@ -36,7 +36,7 @@ public class Util {
         System.out.println("-----");
     }
 
-    public static void printOwnerList(List<GymOwner> gymOwnerList){
+    public static void printOwnerList(List<FlipFitGymOwner> gymOwnerList){
         System.out.println("-----");
         System.out.printf("%-8s\t", "ID");
         System.out.printf("%-8s\t", "NAME");
@@ -45,7 +45,7 @@ public class Util {
         System.out.printf("%23s\t\n", "IS-APPROVED");
         System.out.println("-----");
         System.out.println("");
-        for(GymOwner gymOwner: gymOwnerList) {
+        for(FlipFitGymOwner gymOwner: gymOwnerList) {
             System.out.printf("%-8s\t", gymOwner.getUserID());
             System.out.printf("%-8s\t", gymOwner.getUserName());
             System.out.printf("%-8s\t", gymOwner.getEmail());
@@ -64,7 +64,7 @@ public class Util {
         System.out.println("----");
     }
 
-    public static void printCustomerProfile(Customer customer){
+    public static void printCustomerProfile(FlipFitCustomer customer){
         System.out.println("------------------------------------------------------------------------");
         System.out.println("USER ID: " + customer.getUserID());
         System.out.println("USER NAME: " + customer.getUserName());
@@ -74,12 +74,12 @@ public class Util {
         System.out.println("------------------------------------------------------------------------");
     }
 
-    public static void printSlots(List<Slot> slots){
+    public static void printSlots(List<FlipFitSlot> slots){
         System.out.println("-----");
         System.out.printf("%-8s\t", "SLOT-ID");
         System.out.printf("%-8s\t\n", "SLOT-TIME");
         System.out.println("----");
-        for(Slot slot: slots) {
+        for(FlipFitSlot slot: slots) {
             System.out.printf("%-8s\t", slot.getSlotId());
             System.out.printf("%-8s\t\n", slot.getTime());
         }
