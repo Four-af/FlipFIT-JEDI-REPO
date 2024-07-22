@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class Payment {
+public class FlipFitPayment {
 
     private String paymentId;
     private String amountPaid;

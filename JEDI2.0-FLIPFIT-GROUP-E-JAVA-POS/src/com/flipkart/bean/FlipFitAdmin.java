@@ -1,8 +1,8 @@
 package com.flipkart.bean;
 
-public class Admin extends User {
+public class FlipFitAdmin extends FlipFitUser {
 
-    public Admin() {
+    public FlipFitAdmin() {
         super("123","admin", "admin@flipfit.com", "12345", Role.ADMIN);
     }
 }

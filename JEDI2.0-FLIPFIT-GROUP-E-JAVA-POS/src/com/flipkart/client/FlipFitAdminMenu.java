@@ -1,8 +1,8 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.Admin;
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitAdmin;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.business.*;
 
 import java.time.LocalDateTime;
@@ -15,10 +15,10 @@ import static com.flipkart.utils.Util.*;
 
 
 public class FlipFitAdminMenu {
-    private static Admin admin = new Admin();
-    private static AdminInterface adminService = new AdminService();
-    private static GymOwnerInterface gymOwnerService = new GymOwnerService();
-    private static GymCenterInterface gymCenterService = new GymCenterService();
+    private static FlipFitAdmin admin = new FlipFitAdmin();
+    private static FlipFitAdminInterface adminService = new FlipFitAdminService();
+    private static FlipFitGymOwnerInterface gymOwnerService = new FlipFitGymOwnerService();
+    private static FlipFitGymCenterInterface gymCenterService = new FlipFitGymCenterService();
     public static Scanner scanner = new Scanner(System.in);
 
 
@@ -78,21 +78,21 @@ public class FlipFitAdminMenu {
             int pendingChoice = scanner.nextInt();
             switch (pendingChoice) {
                 case 0:
-                    List<GymOwner> allGymOwners =  gymOwnerService.viewAllGymOwners();
+                    List<FlipFitGymOwner> allGymOwners =  gymOwnerService.viewAllGymOwners();
                     printOwnerList(allGymOwners);
                     break;
                 case 1:
-                    List<GymCenter> allGymCenters = gymCenterService.viewAllGymCenters();
+                    List<FlipFitGymCenter> allGymCenters = gymCenterService.viewAllGymCenters();
                     printGymCentres(allGymCenters);
                     break;
                 case 2:
-                    List<GymOwner> pendingGymOwners = adminService.viewPendingGymOwners();
+                    List<FlipFitGymOwner> pendingGymOwners = adminService.viewPendingGymOwners();
                     printOwnerList(pendingGymOwners);
                     if(!pendingGymOwners.isEmpty()) handleGymOwnerApprovalRequests();
                     break;
 
                 case 3:
-                    List<GymCenter> pendingGymCentres = adminService.viewPendingGymCentres();//get listGymCenterIds
+                    List<FlipFitGymCenter> pendingGymCentres = adminService.viewPendingGymCentres();//get listGymCenterIds
                     printGymCentres(pendingGymCentres);
                     if(!pendingGymCentres.isEmpty()) handleGymCenterApprovalRequests();
                     break;

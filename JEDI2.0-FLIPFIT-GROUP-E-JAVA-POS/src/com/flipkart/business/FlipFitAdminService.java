@@ -1,18 +1,18 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.dao.FlipFitAdminDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminService implements AdminInterface {
+public class FlipFitAdminService implements FlipFitAdminInterface {
 
     FlipFitAdminDAO flipFitAdminDAO = new FlipFitAdminDAO();
 
-    private List<GymOwner> pendinGymOwnerList = new ArrayList<>();
-    private List<GymCenter> pendinGymCentreList = new ArrayList<>();
+    private List<FlipFitGymOwner> pendinGymOwnerList = new ArrayList<>();
+    private List<FlipFitGymCenter> pendinGymCentreList = new ArrayList<>();
 
     public void approveGymCenter(String gymCentreId, boolean isApproved){
         flipFitAdminDAO.validateGymCentre(gymCentreId,isApproved);
@@ -22,12 +22,12 @@ public class AdminService implements AdminInterface {
         flipFitAdminDAO.validateGymOwner(gymOwnerId, isApproved);
     }
 
-    public List<GymCenter> viewPendingGymCentres(){
+    public List<FlipFitGymCenter> viewPendingGymCentres(){
         pendinGymCentreList = flipFitAdminDAO.getPendingGymCentres();
         return pendinGymCentreList;
     }
 
-    public List<GymOwner> viewPendingGymOwners(){
+    public List<FlipFitGymOwner> viewPendingGymOwners(){
         System.out.println("Viewing pending Gym Owner Approvals: ");
         pendinGymOwnerList = flipFitAdminDAO.getPendingGymOwners();
         return pendinGymOwnerList;

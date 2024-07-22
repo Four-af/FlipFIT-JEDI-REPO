@@ -10,7 +10,7 @@ import com.flipkart.bean.Schedule;
 import com.flipkart.dao.FlipFitScheduleDAO;
 public class ScheduleService implements ScheduleInterface {
 
-    private final GymCenterService gymCentreService = new GymCenterService();
+    private final FlipFitGymCenterService gymCentreService = new FlipFitGymCenterService();
     private final SlotService slotService = new SlotService();
     private final FlipFitScheduleDAO flipFitScheduleDAO = new FlipFitScheduleDAO();
 

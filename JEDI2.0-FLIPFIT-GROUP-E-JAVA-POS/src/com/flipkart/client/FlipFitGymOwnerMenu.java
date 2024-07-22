@@ -1,6 +1,6 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.business.*;
 
@@ -15,9 +15,9 @@ import static com.flipkart.utils.Util.*;
 
 public class FlipFitGymOwnerMenu {
 
-    private GymOwnerInterface gymOwnerService = new GymOwnerService();
+    private FlipFitGymOwnerInterface gymOwnerService = new FlipFitGymOwnerService();
     private SlotInterface slotService = new SlotService();
-    private GymCenterInterface gymCentreService = new GymCenterService();
+    private FlipFitGymCenterInterface gymCentreService = new FlipFitGymCenterService();
 
     public boolean gymOwnerLogin(String userName, String password) {
         if (gymOwnerService.loginGymOwner(userName,password)) {
@@ -68,7 +68,7 @@ public class FlipFitGymOwnerMenu {
             switch (choice){
 
                 case 0:
-                    List<GymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
+                    List<FlipFitGymCenter> allGymCentres = gymCentreService.getAllCentresByOwmerId(gymOwnerId);
                     printGymCentres(allGymCentres);
                     break;
 
@@ -97,7 +97,7 @@ public class FlipFitGymOwnerMenu {
                     int price = scanner.nextInt();
 
                     gymCentreService.addCenter(
-                            new GymCenter(
+                            new FlipFitGymCenter(
                                     gymId,
                                     gymOwnerId,
                                     gymCentreName,

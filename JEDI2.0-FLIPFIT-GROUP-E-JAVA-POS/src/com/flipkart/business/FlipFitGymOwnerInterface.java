@@ -1,13 +1,13 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGymOwner;
 
 import java.util.List;
 
-public interface GymOwnerInterface {
+public interface FlipFitGymOwnerInterface {
 
     void requestGymOwnerApproval(String gymOwnerId);
-    List<GymOwner> viewAllGymOwners();
+    List<FlipFitGymOwner> viewAllGymOwners();
     boolean loginGymOwner(String userId, String password);
 
     void registerGymOwner(String userId,String userName, String password, String email, String panNumber,String cardNumber);

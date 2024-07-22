@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.utils.DatabaseConnector;
 
@@ -22,15 +22,15 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
     public FlipFitGymCenterDAO()  {
     }
 
-    public List<GymCenter> viewAllGymCenters() {
-        List<GymCenter> allGymCentres = new ArrayList<>();
+    public List<FlipFitGymCenter> viewAllGymCenters() {
+        List<FlipFitGymCenter> allGymCentres = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             statement = conn.prepareStatement(FETCH_ALL_GYM_CENTRES);
 
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymCenter gymCentre = new GymCenter(
+                FlipFitGymCenter gymCentre = new FlipFitGymCenter(
                         rs.getString("centreId"),
                         rs.getString("ownerId"),
                         rs.getString("centreName"),
@@ -50,14 +50,14 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
     }
 
     @Override
-    public List<GymCenter> getAllCentresByOwnerId(String gymOwnerId) {
+    public List<FlipFitGymCenter> getAllCentresByOwnerId(String gymOwnerId) {
         return List.of();
     }
 
     // api call to retrieve all gym centres and status
-    public List<GymCenter> getAllCentresByOwmerId(String gymOwnerId)  {
+    public List<FlipFitGymCenter> getAllCentresByOwmerId(String gymOwnerId)  {
 
-        List<GymCenter> allGymCentres = new ArrayList<>();
+        List<FlipFitGymCenter> allGymCentres = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             statement = conn.prepareStatement(FETCH_GYM_CENTRES_BY_OWNER_ID);
@@ -65,7 +65,7 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
 
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymCenter gymCentre = new GymCenter(
+                FlipFitGymCenter gymCentre = new FlipFitGymCenter(
                         rs.getString("centreId"),
                         rs.getString("ownerId"),
                         rs.getString("centreName"),
@@ -87,8 +87,8 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
     }
 
 
-    public GymCenter getGymCentreByCentreId(String gymCentreId){
-        GymCenter gymCentre = new GymCenter();
+    public FlipFitGymCenter getGymCentreByCentreId(String gymCentreId){
+        FlipFitGymCenter gymCentre = new FlipFitGymCenter();
         try {
             Connection conn = DatabaseConnector.connect();
             PreparedStatement stmt = conn.prepareStatement(FETCH_GYM_CENTRE_BY_ID);
@@ -112,7 +112,7 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
 
     }
 
-    public void addGymCentre(GymCenter centre) {
+    public void addGymCentre(FlipFitGymCenter centre) {
         // call to db api
         try {
             conn = DatabaseConnector.connect();
@@ -135,8 +135,8 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
         }
     }
 
-    public List<GymCenter> getPendingGymCentreList() {
-        List<GymCenter> pendingList = new ArrayList<>();
+    public List<FlipFitGymCenter> getPendingGymCentreList() {
+        List<FlipFitGymCenter> pendingList = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             System.out.println("Fetching gym centres..");
@@ -145,7 +145,7 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
 
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymCenter gymCentre = new GymCenter(
+                FlipFitGymCenter gymCentre = new FlipFitGymCenter(
                         rs.getString("centreId"),
                         rs.getString("ownerId"),
                         rs.getString("centreName"),
@@ -209,8 +209,8 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
         catch (Exception e) { e.printStackTrace(); }
     }
 
-    public List<GymCenter> getGymCentreListByCity(String city) {
-        List<GymCenter> allCentreByCity = new ArrayList<>();
+    public List<FlipFitGymCenter> getGymCentreListByCity(String city) {
+        List<FlipFitGymCenter> allCentreByCity = new ArrayList<>();
         try {
             conn = DatabaseConnector.connect();
             System.out.println("Fetching gyms centres by City..");
@@ -218,7 +218,7 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
             statement.setString(1, city);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                GymCenter gymCentre = new GymCenter(
+                FlipFitGymCenter gymCentre = new FlipFitGymCenter(
                         rs.getString("centreId"),
                         rs.getString("ownerId"),
                         rs.getString("centreName"),

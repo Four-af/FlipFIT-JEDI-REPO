@@ -1,23 +1,23 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.bean.Slot;
 import com.flipkart.dao.FlipFitGymCenterDAO;
 import java.util.List;
 
-public class GymCenterService implements GymCenterInterface{
+public class FlipFitGymCenterService implements FlipFitGymCenterInterface {
     private static FlipFitGymCenterDAO flipFitGymCenterDAO = new FlipFitGymCenterDAO();
     private static ScheduleInterface scheduleService = new ScheduleService();
 
-    public List<GymCenter> viewAllGymCenters() {
+    public List<FlipFitGymCenter> viewAllGymCenters() {
         return flipFitGymCenterDAO.viewAllGymCenters();
     }
 
-    public List<GymCenter> getAllCentresByOwmerId(String gymOwnerId) {
+    public List<FlipFitGymCenter> getAllCentresByOwmerId(String gymOwnerId) {
         return flipFitGymCenterDAO.getAllCentresByOwmerId(gymOwnerId);
     }
 
-    public List<GymCenter> getCentresByCity(String city){
+    public List<FlipFitGymCenter> getCentresByCity(String city){
         return flipFitGymCenterDAO.getGymCentreListByCity(city);
     }
 
@@ -25,7 +25,7 @@ public class GymCenterService implements GymCenterInterface{
         return scheduleService.getAllAvailableSlotsByDate(centreID, date);
     }
 
-    public void addCenter(GymCenter gymCentre) {
+    public void addCenter(FlipFitGymCenter gymCentre) {
         //takes gymCenter details
         flipFitGymCenterDAO.addGymCentre(gymCentre);
     }
@@ -34,8 +34,8 @@ public class GymCenterService implements GymCenterInterface{
         flipFitGymCenterDAO.sendCentreApprovalRequest(gymCentreId);
     }
 
-    public GymCenter getGymCentreById(String centreID) {
-        GymCenter gymCenter = flipFitGymCenterDAO.getGymCentreByCentreId(centreID);
+    public FlipFitGymCenter getGymCentreById(String centreID) {
+        FlipFitGymCenter gymCenter = flipFitGymCenterDAO.getGymCentreByCentreId(centreID);
         return gymCenter;
     }
 }

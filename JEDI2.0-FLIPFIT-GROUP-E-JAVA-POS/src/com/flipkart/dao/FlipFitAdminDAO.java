@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.GymCenter;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymOwner;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class FlipFitAdminDAO implements FlipFitAdminDAOInterface {
     private static FlipFitGymCenterDAO gymCentreDAO = new FlipFitGymCenterDAO();
 
 
-    public List<GymOwner> getPendingGymOwners() {
+    public List<FlipFitGymOwner> getPendingGymOwners() {
         return flipFitGymOwnerDAO.getPendingGymOwnerList();
     }
 
@@ -23,7 +23,7 @@ public class FlipFitAdminDAO implements FlipFitAdminDAOInterface {
         gymCentreDAO.validateGymCentre(gymCentreId, isApproved);
     }
 
-    public List<GymCenter> getPendingGymCentres() {
+    public List<FlipFitGymCenter> getPendingGymCentres() {
         return gymCentreDAO.getPendingGymCentreList();
     }
 

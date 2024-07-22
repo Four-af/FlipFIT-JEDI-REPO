@@ -1,19 +1,16 @@
 package com.flipkart.client;
 
 //imports
-import com.flipkart.bean.Booking;
-import com.flipkart.bean.Customer;
-import com.flipkart.bean.GymCenter;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitCustomer;
+import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.bean.Slot;
-import com.flipkart.business.CustomerInterface;
-import com.flipkart.business.CustomerService;
-import com.flipkart.exceptions.RegistrationFailedException;
+import com.flipkart.business.FlipFitCustomerInterface;
+import com.flipkart.business.FlipFitCustomerService;
 import com.flipkart.utils.Util;
-import com.flipkart.utils.UserPlan;
 
 import java.util.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.Scanner;
 import static com.flipkart.utils.Util.*;
 
 public class FlipFitCustomerMenu {
-    private CustomerInterface customerService  =  new CustomerService();
+    private FlipFitCustomerInterface customerService  =  new FlipFitCustomerService();
     Scanner scanner = new Scanner(System.in);
 
     public boolean customerLogin(String userName, String password) throws ParseException {
@@ -59,7 +56,7 @@ public class FlipFitCustomerMenu {
     private void bookSlotSubMenu(String userName) throws ParseException {
         System.out.println("Provide Location to search : ");
         String location = scanner.next();
-        List<GymCenter> centreListByLocation = customerService.getAllGymCenterDetailsByCity(location);
+        List<FlipFitGymCenter> centreListByLocation = customerService.getAllGymCenterDetailsByCity(location);
         Util.printGymCentres(centreListByLocation);
         if(centreListByLocation.isEmpty()){
             System.out.println("There are no available GYM Centres in " + location + ". Please Select some other location");
@@ -88,12 +85,12 @@ public class FlipFitCustomerMenu {
 
     private void printbookingsSubMenu(String userName){
         System.out.println("Bookings : ");
-        List<Booking> allBookingList= customerService.getCustomerBookings(userName);
+        List<FlipFitBooking> allBookingList= customerService.getCustomerBookings(userName);
         System.out.println("-----");
         System.out.printf("%-8s\t", "BOOKING-ID");
         System.out.printf("%47s\t\n", "SCHEDULE-ID");
         System.out.println("-----");
-        for(Booking booking: allBookingList) {
+        for(FlipFitBooking booking: allBookingList) {
             System.out.printf("%-8s\t", booking.getBookingID());
             System.out.printf("%-8s\t\n", booking.getScheduleID());
         }
@@ -122,7 +119,7 @@ public class FlipFitCustomerMenu {
             int choice = scanner.nextInt();
             switch(choice){
                 case 1:
-                    Customer customer= customerService.viewMyProfile(userName);
+                    FlipFitCustomer customer= customerService.viewMyProfile(userName);
                     printCustomerProfile(customer);
                     break;
                 case 2:

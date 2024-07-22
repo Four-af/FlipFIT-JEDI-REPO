@@ -2,17 +2,17 @@ package com.flipkart.bean;
 
 import java.util.List;
 
-public class GymOwner extends User {
+public class FlipFitGymOwner extends FlipFitUser {
     private String panNumber;
     private List<String> gymCentreIDs;
     private String cardDetails;
     private boolean isApproved;
 
-    public GymOwner() {
+    public FlipFitGymOwner() {
 
     }
 
-    public GymOwner(String id,String userName, String email, String password, String panNumber, String cardDetails) {
+    public FlipFitGymOwner(String id, String userName, String email, String password, String panNumber, String cardDetails) {
         super(id,userName, email, password, Role.GYM_OWNER);
         this.panNumber = panNumber;
         this.cardDetails = cardDetails;

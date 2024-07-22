@@ -1,16 +1,16 @@
 package com.flipkart.bean;
 
-public class Booking {
+public class FlipFitBooking {
     private String bookingID;
     private String userID;
     private String scheduleID;
 
-    public Booking(String userID, String scheduleID) {
+    public FlipFitBooking(String userID, String scheduleID) {
         this.userID = userID;
         this.scheduleID = scheduleID;
     }
 
-    public Booking(String bookingID, String userID, String scheduleID) {
+    public FlipFitBooking(String bookingID, String userID, String scheduleID) {
         this.bookingID = bookingID;
         this.userID = userID;
         this.scheduleID = scheduleID;
