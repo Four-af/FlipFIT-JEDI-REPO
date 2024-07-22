@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.utils.DatabaseConnector;
@@ -19,8 +19,8 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
     public FlipFitSlotDAO(){
     }
 
-    public List<Slot> getSlotList() {
-        List<Slot> slotList = new ArrayList<>();
+    public List<FlipFitSlot> getSlotList() {
+        List<FlipFitSlot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.FETCH_ALL_SLOTS);
@@ -30,7 +30,7 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
                 String centreId = rs.getString("centreId");
                 LocalTime time = rs.getTime("time").toLocalTime();
 
-                slotList.add(new Slot(slotId, centreId, time));
+                slotList.add(new FlipFitSlot(slotId, centreId, time));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -39,8 +39,8 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
         return slotList;
     }
 
-    public List<Slot> getSlotByCentreId(String gymCentreId){
-        List<Slot> slotList = new ArrayList<>();
+    public List<FlipFitSlot> getSlotByCentreId(String gymCentreId){
+        List<FlipFitSlot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.FETCH_SLOT_BY_CENTRE);
@@ -51,7 +51,7 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
                 String centreId = rs.getString("centreId");
                 LocalTime time = rs.getTime("time").toLocalTime();
 
-                slotList.add(new Slot(slotId, centreId, time));
+                slotList.add(new FlipFitSlot(slotId, centreId, time));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -60,7 +60,7 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
         return slotList;
     }
 
-    public void addSlot(Slot slot){
+    public void addSlot(FlipFitSlot slot){
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.ADD_SLOT);
@@ -73,8 +73,8 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
         }
     }
 
-    public Slot getSlotById(String slotID) {
-        Slot slot = null;
+    public FlipFitSlot getSlotById(String slotID) {
+        FlipFitSlot slot = null;
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.FETCH_SLOT_BY_ID);
@@ -83,7 +83,7 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
             while(rs.next()){
                 String centreId = rs.getString("centreId");
                 LocalTime time = rs.getTime("time").toLocalTime();
-                slot = new Slot(slotID, centreId, time);
+                slot = new FlipFitSlot(slotID, centreId, time);
             }
 
         } catch (SQLException e) {
@@ -93,8 +93,8 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
         return slot;
     }
 
-    public Slot getSlotByIdandCentreId(String slotID,String centreID) {
-        Slot slot = null;
+    public FlipFitSlot getSlotByIdandCentreId(String slotID, String centreID) {
+        FlipFitSlot slot = null;
         try{
             Connection conn = DatabaseConnector.connect();
             PreparedStatement ps = conn.prepareStatement(SQLConstants.FETCH_SLOT_BY_ID_AND_CENTRE_ID);
@@ -103,7 +103,7 @@ public class FlipFitSlotDAO implements FlipFitSlotDAOInterface {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 LocalTime time = rs.getTime("time").toLocalTime();
-                slot = new Slot(slotID, centreID, time);
+                slot = new FlipFitSlot(slotID, centreID, time);
             }
 
         } catch (SQLException e) {

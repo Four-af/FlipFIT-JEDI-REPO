@@ -3,7 +3,7 @@ package com.flipkart.business;
 import com.flipkart.bean.FlipFitBooking;
 import com.flipkart.bean.FlipFitCustomer;
 import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.dao.FlipFitCustomerDAO;
 import com.flipkart.exceptions.RegistrationFailedException;
 import com.flipkart.exceptions.UserInvalidException;
@@ -16,8 +16,8 @@ public class FlipFitCustomerService implements FlipFitCustomerInterface {
 
     private FlipFitGymCenterInterface gymCentreService = new FlipFitGymCenterService();
     private FlipFitBookingInterface bookingService = new FlipFitBookingService();
-    private ScheduleInterface scheduleService = new ScheduleService();
-    private SlotInterface slotService = new SlotService();
+    private FlipFitScheduleInterface scheduleService = new FlipFitScheduleService();
+    private FlipFitSlotInterface slotService = new FlipFitSlotService();
     private FlipFitCustomerDAO customerDAO = new FlipFitCustomerDAO();
 
     public List<FlipFitGymCenter> getAllGymCenterDetailsByCity(String city){
@@ -26,7 +26,7 @@ public class FlipFitCustomerService implements FlipFitCustomerInterface {
     }
 
     @Override
-    public List<Slot> getAvailableSlots(String centreID, Date date) {
+    public List<FlipFitSlot> getAvailableSlots(String centreID, Date date) {
         return gymCentreService.getAvailableSlotsByCentreAndDate(centreID,date);
     }
 

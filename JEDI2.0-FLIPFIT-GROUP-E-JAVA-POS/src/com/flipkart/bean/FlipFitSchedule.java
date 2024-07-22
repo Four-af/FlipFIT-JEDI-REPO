@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 
-public class Schedule {
+public class FlipFitSchedule {
     private String scheduleID;
     private String slotId;
     private int availability;
     private LocalDate date;
 
 
-    public Schedule(LocalDate date, String slotId, int availability) {
+    public FlipFitSchedule(LocalDate date, String slotId, int availability) {
         this.scheduleID =UUID.randomUUID().toString();
         this.date = date;
         this.slotId = slotId;

@@ -1,7 +1,7 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.business.*;
 
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import static com.flipkart.utils.Util.*;
 public class FlipFitGymOwnerMenu {
 
     private FlipFitGymOwnerInterface gymOwnerService = new FlipFitGymOwnerService();
-    private SlotInterface slotService = new SlotService();
+    private FlipFitSlotInterface slotService = new FlipFitSlotService();
     private FlipFitGymCenterInterface gymCentreService = new FlipFitGymCenterService();
 
     public boolean gymOwnerLogin(String userName, String password) {
@@ -123,7 +123,7 @@ public class FlipFitGymOwnerMenu {
                     boolean isAdding = true;
                     String centerId = null;
 
-                    List<Slot> newSlotList = new ArrayList<>();
+                    List<FlipFitSlot> newSlotList = new ArrayList<>();
                     while (isAdding) {
                         System.out.println("Enter new slot id: ");
                         String slotId = scanner.next();
@@ -137,7 +137,7 @@ public class FlipFitGymOwnerMenu {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                         LocalTime localTime = LocalTime.parse(time, formatter);
 
-                        newSlotList.add(new Slot(
+                        newSlotList.add(new FlipFitSlot(
                                 slotId,
                                 centerId,
                                 localTime

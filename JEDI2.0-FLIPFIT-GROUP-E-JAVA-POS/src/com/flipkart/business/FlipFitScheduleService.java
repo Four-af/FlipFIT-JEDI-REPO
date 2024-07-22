@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.flipkart.bean.Slot;
-import com.flipkart.bean.Schedule;
+import com.flipkart.bean.FlipFitSlot;
+import com.flipkart.bean.FlipFitSchedule;
 import com.flipkart.dao.FlipFitScheduleDAO;
-public class ScheduleService implements ScheduleInterface {
+public class FlipFitScheduleService implements FlipFitScheduleInterface {
 
     private final FlipFitGymCenterService gymCentreService = new FlipFitGymCenterService();
-    private final SlotService slotService = new SlotService();
+    private final FlipFitSlotService slotService = new FlipFitSlotService();
     private final FlipFitScheduleDAO flipFitScheduleDAO = new FlipFitScheduleDAO();
 
-    public Schedule createSchedule(Date date, String slotId){
+    public FlipFitSchedule createSchedule(Date date, String slotId){
         String centreID = slotService.getSlotByID(slotId).getCenterID();
         int availability = gymCentreService.getGymCentreById(centreID).getCapacity();
-        Schedule schedule = new Schedule(date.toInstant()
+        FlipFitSchedule schedule = new FlipFitSchedule(date.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate(), slotId, availability);
         flipFitScheduleDAO.addSchedule(schedule);
@@ -25,9 +25,9 @@ public class ScheduleService implements ScheduleInterface {
         return schedule;
     }
 
-    public Schedule getScheduleByDateAndSlotId(String SlotId, Date date){
-        List<Schedule> scheduleList = flipFitScheduleDAO.getAllScheduleByDate(date);
-        for(Schedule schedule: scheduleList){
+    public FlipFitSchedule getScheduleByDateAndSlotId(String SlotId, Date date){
+        List<FlipFitSchedule> scheduleList = flipFitScheduleDAO.getAllScheduleByDate(date);
+        for(FlipFitSchedule schedule: scheduleList){
             if(schedule.getSlotId().equals(SlotId))
                 return schedule;
         }
@@ -39,12 +39,12 @@ public class ScheduleService implements ScheduleInterface {
         return flipFitScheduleDAO.modifySchedule(scheduleId, action);
     }
 
-    public List<Schedule> checkAvailability(String centreID, Date date){
-        List<Slot> allSlotsForGym = slotService.getAllSlotsByCentre(centreID);
-        List<Schedule> allAvailableSchedules = new ArrayList<>();
-        for(Slot slot : allSlotsForGym){
+    public List<FlipFitSchedule> checkAvailability(String centreID, Date date){
+        List<FlipFitSlot> allSlotsForGym = slotService.getAllSlotsByCentre(centreID);
+        List<FlipFitSchedule> allAvailableSchedules = new ArrayList<>();
+        for(FlipFitSlot slot : allSlotsForGym){
             String slotId = slot.getSlotId();
-            Schedule schedule = getOrCreateSchedule(slotId, date);
+            FlipFitSchedule schedule = getOrCreateSchedule(slotId, date);
             if(schedule.getAvailability() > 0)
                 allAvailableSchedules.add(schedule);
         }
@@ -52,11 +52,11 @@ public class ScheduleService implements ScheduleInterface {
         return allAvailableSchedules;
     }
 
-    public List<Slot> getAllAvailableSlotsByDate(String centreID, Date date) {
-        List<Slot> allSlotsOfThatCentre = slotService.getAllSlotsByCentre(centreID);
-        List<Slot> response = slotService.getAllSlotsByCentre(centreID);
-        for(Slot slot: allSlotsOfThatCentre){
-            for(Schedule schedule: flipFitScheduleDAO.getAllScheduleByDate(date)){
+    public List<FlipFitSlot> getAllAvailableSlotsByDate(String centreID, Date date) {
+        List<FlipFitSlot> allSlotsOfThatCentre = slotService.getAllSlotsByCentre(centreID);
+        List<FlipFitSlot> response = slotService.getAllSlotsByCentre(centreID);
+        for(FlipFitSlot slot: allSlotsOfThatCentre){
+            for(FlipFitSchedule schedule: flipFitScheduleDAO.getAllScheduleByDate(date)){
                 if (slotService.getSlotByID(schedule.getSlotId()).getCenterID().equals(centreID)){
                     if(schedule.getAvailability() <= 0){
                         response.remove(slot);
@@ -67,12 +67,12 @@ public class ScheduleService implements ScheduleInterface {
         return response;
     }
 
-    public Schedule getSchedule(String scheduleID){
+    public FlipFitSchedule getSchedule(String scheduleID){
         return flipFitScheduleDAO.getSchedule(scheduleID);
     }
 
-    public Schedule getOrCreateSchedule(String slotId, Date date) {
-        Schedule schedule = getScheduleByDateAndSlotId(slotId, date);
+    public FlipFitSchedule getOrCreateSchedule(String slotId, Date date) {
+        FlipFitSchedule schedule = getScheduleByDateAndSlotId(slotId, date);
         if( schedule == null ){
             return createSchedule(date,slotId);
         }

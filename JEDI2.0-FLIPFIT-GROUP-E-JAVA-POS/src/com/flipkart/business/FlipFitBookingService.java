@@ -1,7 +1,7 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.FlipFitBooking;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.dao.FlipFitBookingDAO;
 import com.flipkart.exceptions.BookingFailedException;
 import com.flipkart.utils.UserPlan;
@@ -12,11 +12,11 @@ import java.util.List;
 public class FlipFitBookingService implements FlipFitBookingInterface {
 
     private final FlipFitBookingDAO bookingDAO = new FlipFitBookingDAO();
-    private final ScheduleService scheduleService  = new ScheduleService();
-    private final SlotService slotService = new SlotService();
+    private final FlipFitScheduleService scheduleService  = new FlipFitScheduleService();
+    private final FlipFitSlotService slotService = new FlipFitSlotService();
 
     public boolean checkBookingOverlap(String customerId, Date date, String slotId){
-        Slot slot = slotService.getSlotByID(slotId);
+        FlipFitSlot slot = slotService.getSlotByID(slotId);
         return bookingDAO.checkBookingOverlap(customerId,date,slot.getTime());
     }
 

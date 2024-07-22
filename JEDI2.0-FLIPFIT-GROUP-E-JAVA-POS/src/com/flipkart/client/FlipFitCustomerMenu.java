@@ -4,7 +4,7 @@ package com.flipkart.client;
 import com.flipkart.bean.FlipFitBooking;
 import com.flipkart.bean.FlipFitCustomer;
 import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.business.FlipFitCustomerInterface;
 import com.flipkart.business.FlipFitCustomerService;
 import com.flipkart.utils.Util;
@@ -71,7 +71,7 @@ public class FlipFitCustomerMenu {
 
     private void chooseSlot(String gymCentreId,String userName,Date sqlDate,String centreId) throws ParseException {
         System.out.println("Choose from the Below Slots");
-        List<Slot> availableSlots = customerService.getAvailableSlots(gymCentreId,sqlDate);
+        List<FlipFitSlot> availableSlots = customerService.getAvailableSlots(gymCentreId,sqlDate);
         printSlots(availableSlots);
         if(availableSlots.isEmpty()){
             System.out.println("There are no available slots in the " + gymCentreId + ". Please Select some other gym");

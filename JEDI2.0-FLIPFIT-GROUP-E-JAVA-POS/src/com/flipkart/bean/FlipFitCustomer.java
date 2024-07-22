@@ -9,7 +9,7 @@ public class FlipFitCustomer extends FlipFitUser {
 
     }
     public FlipFitCustomer(String userId, String userName, String email, String password, String customerPhone, String cardDetails) {
-        super(userId, userName, email, password, Role.CUSTOMER);
+        super(userId, userName, email, password, FlipFitRole.CUSTOMER);
         this.customerPhone = customerPhone;
         this.cardDetails = cardDetails;
     }

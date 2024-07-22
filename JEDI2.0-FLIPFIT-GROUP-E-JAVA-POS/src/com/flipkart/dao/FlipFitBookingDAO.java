@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
 import com.flipkart.bean.FlipFitBooking;
-import com.flipkart.bean.Schedule;
+import com.flipkart.bean.FlipFitSchedule;
 import com.flipkart.utils.UserPlan;
 
 import java.time.LocalTime;
@@ -47,7 +47,7 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
         try {
             List<FlipFitBooking> customerBookings = getBookingByCustomerId(customerId);
             for (FlipFitBooking booking : customerBookings) {
-                Schedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
+                FlipFitSchedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
                 UserPlan userPlan = new UserPlan(
                         schedule.getSlotId(),
                         "123",

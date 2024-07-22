@@ -3,7 +3,7 @@ package com.flipkart.utils;
 import com.flipkart.bean.FlipFitCustomer;
 import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.bean.FlipFitGymOwner;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,12 +74,12 @@ public class Util {
         System.out.println("------------------------------------------------------------------------");
     }
 
-    public static void printSlots(List<Slot> slots){
+    public static void printSlots(List<FlipFitSlot> slots){
         System.out.println("-----");
         System.out.printf("%-8s\t", "SLOT-ID");
         System.out.printf("%-8s\t\n", "SLOT-TIME");
         System.out.println("----");
-        for(Slot slot: slots) {
+        for(FlipFitSlot slot: slots) {
             System.out.printf("%-8s\t", slot.getSlotId());
             System.out.printf("%-8s\t\n", slot.getTime());
         }

@@ -6,12 +6,12 @@ public class FlipFitUser {
     private String userName;
     private String email;
     private String password;
-    private Role role;
+    private FlipFitRole role;
 
     public FlipFitUser() {
     }
 
-    public FlipFitUser(String id, String userName, String email, String password, Role role) {
+    public FlipFitUser(String id, String userName, String email, String password, FlipFitRole role) {
         this.userID = id;
         this.userName = userName;
         this.email = email;
@@ -19,11 +19,11 @@ public class FlipFitUser {
         this.role = role;
     }
 
-    public Role getRole() {
+    public FlipFitRole getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(FlipFitRole role) {
         this.role = role;
     }
 

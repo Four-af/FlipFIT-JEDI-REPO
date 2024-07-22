@@ -1,13 +1,13 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.Slot;
+import com.flipkart.bean.FlipFitSlot;
 import com.flipkart.dao.FlipFitGymCenterDAO;
 import java.util.List;
 
 public class FlipFitGymCenterService implements FlipFitGymCenterInterface {
     private static FlipFitGymCenterDAO flipFitGymCenterDAO = new FlipFitGymCenterDAO();
-    private static ScheduleInterface scheduleService = new ScheduleService();
+    private static FlipFitScheduleInterface scheduleService = new FlipFitScheduleService();
 
     public List<FlipFitGymCenter> viewAllGymCenters() {
         return flipFitGymCenterDAO.viewAllGymCenters();
@@ -21,7 +21,7 @@ public class FlipFitGymCenterService implements FlipFitGymCenterInterface {
         return flipFitGymCenterDAO.getGymCentreListByCity(city);
     }
 
-    public List<Slot> getAvailableSlotsByCentreAndDate(String centreID, java.util.Date date) {
+    public List<FlipFitSlot> getAvailableSlotsByCentreAndDate(String centreID, java.util.Date date) {
         return scheduleService.getAllAvailableSlotsByDate(centreID, date);
     }
 
