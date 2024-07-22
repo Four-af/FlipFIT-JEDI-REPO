@@ -12,6 +12,6 @@ public class FlipFitAdmin extends FlipFitUser {
      * and assigns the role as ADMIN.
      */
     public FlipFitAdmin() {
-        super("123", "admin", "admin@flipfit.com", "admin", FlipFitRole.ADMIN);
+        super("admin", "admin", "admin@flipfit.com", "admin", FlipFitRole.ADMIN);
     }
 }

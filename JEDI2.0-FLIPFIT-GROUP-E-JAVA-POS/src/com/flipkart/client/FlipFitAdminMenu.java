@@ -51,7 +51,7 @@ public class FlipFitAdminMenu {
     }
     private void handleGymCenterApprovalRequests(){
         // print the list with indexes from 1
-        System.out.println("Press 0 to EXIT_MESSAGE or Choose the Gym Centre To Modify:");
+        System.out.println("Press 0 to Exit or Choose the Gym Centre To Modify:");
         String requestGymCenterId = scanner.next();
         if (requestGymCenterId.equals("0")) return;
 //            Now Admin will select an request and we will pop up with two

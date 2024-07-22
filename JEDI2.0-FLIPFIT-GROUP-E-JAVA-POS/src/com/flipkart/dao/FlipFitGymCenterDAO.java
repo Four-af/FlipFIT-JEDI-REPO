@@ -201,7 +201,7 @@ public class FlipFitGymCenterDAO implements FlipFitGymCentreDAOInterface {
             System.out.println("Sending gym centre approval request..");
             // SQL_APPROVE_GYM_CENTRE_BY_ID_QUERY="Update GymCentre Set isApproved=? WHERE centreId=?";
             statement = conn.prepareStatement(SQLConstants.SQL_APPROVE_GYM_CENTRE_BY_ID_QUERY);
-            statement.setInt(1,1);
+            statement.setInt(1,0);
             statement.setString(2, gymCentreId);
             statement.executeUpdate();
 
