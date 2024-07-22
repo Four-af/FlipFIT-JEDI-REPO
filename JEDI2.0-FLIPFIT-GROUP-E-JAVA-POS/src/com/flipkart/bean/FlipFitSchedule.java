@@ -3,6 +3,12 @@ package com.flipkart.bean;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ *
+ * @author JEDI-E
+ * Schedule Class
+ *
+ */
 
 public class FlipFitSchedule {
     private String scheduleID;
@@ -10,47 +16,80 @@ public class FlipFitSchedule {
     private int availability;
     private LocalDate date;
 
-
+    /**
+     * Constructor for FlipFitSchedule.
+     * @param date the date of the schedule (LocalDate object)
+     * @param slotId the ID of the slot associated with the schedule
+     * @param availability the availability status of the slot (integer)
+     */
     public FlipFitSchedule(LocalDate date, String slotId, int availability) {
-        this.scheduleID =UUID.randomUUID().toString();
+        this.scheduleID = UUID.randomUUID().toString(); // Generate a unique schedule ID
         this.date = date;
         this.slotId = slotId;
         this.availability = availability;
     }
 
-
-    public void setScheduleID(String ScheduleID) {
-        this.scheduleID = ScheduleID;
+    /**
+     * Setter for the schedule ID.
+     * @param scheduleID the schedule ID to set
+     */
+    public void setScheduleID(String scheduleID) {
+        this.scheduleID = scheduleID;
     }
 
+    /**
+     * Getter for the schedule ID.
+     * @return the schedule ID
+     */
     public String getScheduleID() {
         return scheduleID;
     }
 
+    /**
+     * Setter for the date of the schedule.
+     * @param date the date to set for the schedule (LocalDate object)
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    /**
+     * Getter for the date of the schedule.
+     * @return the date of the schedule (LocalDate object)
+     */
     public LocalDate getDate() {
         return date;
     }
 
-
-
-    public void setSlotId(String SlotId) {
-        this.slotId = SlotId;
+    /**
+     * Setter for the slot ID associated with the schedule.
+     * @param slotId the slot ID to set
+     */
+    public void setSlotId(String slotId) {
+        this.slotId = slotId;
     }
 
+    /**
+     * Getter for the slot ID associated with the schedule.
+     * @return the slot ID
+     */
     public String getSlotId() {
         return slotId;
     }
 
-
-
+    /**
+     * Getter for the availability status of the slot.
+     * @return the availability status (integer)
+     */
     public int getAvailability() {
         return availability;
     }
 
-    public void setAvailability(int Availability) {
-        this.availability =Availability;
+    /**
+     * Setter for the availability status of the slot.
+     * @param availability the availability status to set
+     */
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 }
