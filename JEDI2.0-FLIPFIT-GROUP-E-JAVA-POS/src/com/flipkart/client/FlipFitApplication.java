@@ -6,6 +6,7 @@ import com.flipkart.exceptions.LoginFailedException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+
 public class FlipFitApplication {
     public static Scanner scanner = new Scanner(System.in);
     private static FlipFitAdminMenu adminClient = new FlipFitAdminMenu();
@@ -22,6 +23,9 @@ public class FlipFitApplication {
                 break;
             case 2:
                 registration();
+                break;
+            case 3:
+                changePassword();
                 break;
             case 4:
                 System.out.println("Thanks for visiting!");
@@ -62,7 +66,6 @@ public class FlipFitApplication {
             System.out.println("Invalid Option Selected");
         }
     }
-
     private static void registration(){
         try {
             System.out.println("Enter your role");
@@ -87,7 +90,34 @@ public class FlipFitApplication {
             System.out.println("Invalid Option Selected");
         }
     }
+    // Rough work
+    private static void changePassword(){
+        try {
+            System.out.println("Enter your Role");
+            FlipFitRole role = FlipFitRole.valueOf(scanner.next().toUpperCase());
 
+            System.out.println("Enter your Username: ");
+            String userName = scanner.next();
+
+            System.out.println("Enter your New Password: ");
+            String newPassword = scanner.next();
+
+            switch (role){
+                case GYM_OWNER:
+                    gymOwnerClient.gymOwnerChangePassword(userName,newPassword);
+                    break;
+                case CUSTOMER:
+                    System.out.println("Customer is already registered");
+                    break;
+                default:
+                    System.out.println("Invalid Option Selected");
+                    break;
+            }
+        }catch (IllegalArgumentException | LoginFailedException e){
+            System.out.println("Invalid Option Selected");
+        }
+    }
+    //
     public static void main(String[] args) {
         System.out.println("Welcome to FlipFit Application!\n");
         mainPage();

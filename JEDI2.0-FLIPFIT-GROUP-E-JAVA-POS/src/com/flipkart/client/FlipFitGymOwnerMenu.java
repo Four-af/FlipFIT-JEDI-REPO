@@ -29,6 +29,18 @@ public class FlipFitGymOwnerMenu {
         return true;
     }
 
+    // Rough Work
+
+    public void gymOwnerChangePassword(String userName, String password) {
+        if (gymOwnerService.changePasswordGymOwner(userName,password)) {
+            System.out.println("Successfully logged in");
+            gymOwnerClientMainPage(userName);
+        } else {
+        }
+    }
+
+    //
+
     public void register() {
         System.out.println("Enter your Username");
         String userName = scanner.next();

@@ -40,4 +40,6 @@ public interface FlipFitGymOwnerInterface {
      */
     void registerGymOwner(String userId, String userName, String password,
                           String email, String panNumber, String cardNumber);
+
+    boolean changePasswordGymOwner(String userName, String password);
 }

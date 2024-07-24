@@ -3,6 +3,7 @@ package com.flipkart.constants;
 public class SQLConstants {
 
     //-------------------CHANGE PASSWORD---------------------
+    public static  final  String CHANGE_GYM_OWNER_PASSWORD_QUERY = "UPDATE FlipFit.GymOwner SET password =? WHERE id =?;";
 
     // ------------------------ GYM OWNER ------------------------
     public static final String FETCH_ALL_GYM_OWNERS_QUERY = "SELECT * FROM FlipFit.GymOwner";

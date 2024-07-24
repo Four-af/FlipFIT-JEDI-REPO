@@ -98,6 +98,27 @@ public class FlipFitGymOwnerDAO implements FlipFitGymOwnerDAOInterface {
         return false;
     }
 
+    //Rough Work
+    public boolean changePasswordGymOwner(String username,String password) {
+        try {
+            conn = DatabaseConnector.connect();
+            ResultSet result;
+            try {
+                statement = conn.prepareStatement(SQLConstants.CHANGE_GYM_OWNER_PASSWORD_QUERY);
+                statement.setString(1, password);
+                statement.setString(2, username);
+                statement.executeQuery();
+            } catch (Exception e) {
+                System.out.println("SQL Exception\n");
+                return false;
+            }
+        }catch (SQLException e){
+            System.out.println("SQL Exception\n");
+        }
+        return false;
+    }
+    //
+
     /**
      * Registers a new gym owner with the GMS platform and adds
      * the details to DB. Initially, this gym owner is not approved

@@ -15,6 +15,11 @@ public class FlipFitGymOwnerService implements FlipFitGymOwnerInterface {
         return FLIP_FIT_GYM_OWNER_DAO.getGymOwnerList();
     }
 
+    // Rough Work
+    public boolean changePasswordGymOwner(String username,String password){
+        return FLIP_FIT_GYM_OWNER_DAO.changePasswordGymOwner(username,password);
+    }
+    //
     public boolean loginGymOwner(String username,String password){
         return FLIP_FIT_GYM_OWNER_DAO.loginGymOwner(username,password);
     }
