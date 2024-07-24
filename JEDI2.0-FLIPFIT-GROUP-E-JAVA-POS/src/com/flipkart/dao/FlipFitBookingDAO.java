@@ -18,10 +18,8 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
 
     public void addBooking(String userName, String scheduleID) {
         try {
-            // Simulate generating a booking ID (not from database sequence)
             String bookingId = userName + scheduleID;
 
-            // Assuming a successful booking adds to the list
             FlipFitBooking booking = new FlipFitBooking(bookingId, userName, scheduleID);
             bookingList.add(booking);
             System.out.println("Booking added successfully");
@@ -48,7 +46,7 @@ public class FlipFitBookingDAO implements FlipFitBookingDAOInterface {
                 FlipFitSchedule schedule = flipFitScheduleDAO.getSchedule(booking.getScheduleID());
                 UserPlan userPlan = new UserPlan(
                         schedule.getSlotId(),
-                        "123",
+                        schedule.getSlotId(),
                         schedule.getDate().atStartOfDay().toLocalTime(),
                         schedule.getScheduleID(),
                         schedule.getDate()
